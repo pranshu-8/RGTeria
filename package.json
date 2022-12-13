@@ -11,7 +11,7 @@
     "hot": "mix watch --hot",
     "production": "mix --production"
   },
-  "author": "Kuldeep Singh",
+  "author": "Pranshu Tewari",
   "license": "ISC",
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.18.6",
