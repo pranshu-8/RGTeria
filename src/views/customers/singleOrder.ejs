@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <link
+    href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+    rel="stylesheet"
+  />
+
+  <body>
+    <!-- Single Order -->
+    <section class="section status">
+      <div class="  container mx-auto text-black h-screen">
+        <div class="status-box w-full md:w-4/5 lg:w-2/3 mx-auto">
+          <div
+            class="flex flex-col sm:flex-row items-center justify-between mb-12"
+          >
+            <h1 class="text-xl font-bold mb-4 sm:mb-0">
+              Track order status
+            </h1>
+            <h6 class="py-1 rounded-full px-4 text-green-600 text-xs">
+              <%= order._id %>
+            </h6>
+            <input
+              id="hiddenInput"
+              type="hidden"
+              value="<%= JSON.stringify(order) %>"
+            />
+          </div>
+          <ul>
+            <li
+              class="status_line text-sm md:text-xl pb-16"
+              data-status="order_placed"
+            >
+              <span>Your order is placed</span>
+            </li>
+            <li
+              class="status_line text-sm md:text-xl pb-16"
+              data-status="confirmed"
+            >
+              <span>Your payment has been received</span>
+            </li>
+            <li
+              class="status_line text-sm md:text-xl pb-16"
+              data-status="prepared"
+            >
+              <span>Your order is being prepared.</span>
+            </li>
+            <li
+              class="status_line text-sm md:text-xl pb-16"
+              data-status="delivered"
+            >
+            <span>Your order is prepared and is ready for take away or dine in</span>
+            </li>
+            <li class="status_line text-sm md:text-xl" data-status="completed">
+              <span>Order Completed. Thank you for ordering from us.😄</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <link
+    href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+    rel="stylesheet"
+  />
+  <body>
+    <section class="orders section light-section">
+      <div class="container max-w-max mx-auto pt-2 px-2">
+        
+
+        <a href="#orderTableBodys" class="link font-bold text-lg mb-8 underline md:text-2xl">Pending Orders Count</a>
+        <h1 class="font-bold text-lg mb-8  md:text-2xl mt-4">All Orders     </h1>
+        <table class="w-full table-auto bg-white text-green-900">
+          <thead>
+            <tr>
+              <th class="px-4 py-2 text-left font-bold md:text-xl">Orders</th>
+              <th class="px-4 py-2 text-left font-bold md:text-xl">Customer</th>
+              <th class="px-4 py-2 text-left font-bold md:text-xl">Status</th>
+              <th class="px-4 py-2 text-left font-bold md:text-xl">
+                Placed at
+              </th>
+            </tr>
+          </thead>
+        </div>
+
+          <tbody  id="orderTableBody"></tbody>
+        </table>
+        <div  id="orderTableBodys" class="container max-w-max mx-auto pt-2 px-2">
+        <table class="w-full table-auto bg-white text-green-900  mt-10">
+          <thead>
+            <tr>
+              <th class="px-16 py-2 text-left font-bold md:text-xl ">Item Name</th>
+              <th class="px-8 py-2 text-left font-bold md:text-xl">Number of pending orders</th>
+            </tr>
+          </thead>
+          <tbody id="orderTableCountBody"></tbody>
+        </table>
+        </div>
+    </section>
+  </body>
+</html>

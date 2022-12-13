@@ -1,0 +1,179 @@
+<!--========== HOME ==========-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+
+<body>
+    <div id="loading"></div>
+    <section class="home font-bold pt-12 md:pt-0" id="home">
+      <div class="home__container  bd-container bd-grid">
+        <div class="home__data">
+          <h1 class="home__title"></h1>
+          <h2 class="home__subtitle">
+              Feeling hungry?!<br />
+              Then Fikar Not, We are here to serve your taste buds
+          </h2>
+          <a href="/menu" class="button">Order Now</a>
+        </div>
+
+        <img src="/img/about.jpg" alt="" style="border-radius: 10%;" class="home__img" />
+      </div>
+    </section>
+
+     <!--========== MENU ==========-->
+    <section class="menu  bd-container section font-bold" id="menu">
+      <span class="section-subtitle">Special</span>
+      <h2 class="section-title">Our most popular servings of the Week</h2>
+      <% if(user){ %>
+      <a class="section-subtitle   underline" href="/rank">Want  to check out the complete list? 📊  </a>
+      <% } 
+       else{ %>
+      <a class="section-subtitle underline" href="/login" >Log In to check out the complete list 📊  </a>
+      <% } %>
+<% let item1= foods.top
+     let item2= foods.middle
+     let item3=foods.bottom
+     let img= '/img/'
+     let users= user?.role
+      %>
+      <div class="menu__container bd-grid">
+        <div class="menu__content">
+          <img src=" <%=img.concat(item1.image) %> " alt="" class="menu__img" />
+          <h3 class="menu__name"><%= item1.name %></h3>
+           <span class="menu__detail">Number of orders: <%= item1.count %></span>
+          <span class="menu__preci"> Price : ₹<%= item1.price %></span> 
+          <a href="/menu#week" class="add-to-week button menu__button"><i class="bx bx-cart-alt"></i></a>
+        </div>
+
+        <div class="menu__content">
+          <img src="<%=img.concat(item2.image) %> " alt="" class="menu__img" />
+          <h3 class="menu__name"><%= item2.name %></h3>
+           <span class="menu__detail">Number of orders: <%= item2.count %></span>
+          <span class="menu__preci"> Price :₹<%= item2.price %></span> 
+          <a href="/menu#week" class="add-to-week button menu__button "><i class="bx bx-cart-alt"></i></a>
+        </div>
+
+        <div class="menu__content">
+          <img src="<%=img.concat(item3.image) %> " alt="" class="menu__img" />
+          <h3 class="menu__name"><%= item3.name %></h3>
+          <span class="menu__detail">Number of orders: <%= item3.count %></span>
+          <span class="menu__preci"> Price :₹<%= item3.price %></span>
+          <a href="/menu#week" class="add-to-week button menu__button "><i class="bx bx-cart-alt"></i></a>
+        </div>
+      </div>
+    </section>
+
+  <!--========== CONTACT US ==========-->
+  <% if(user?.role==="customer" ) { %>
+  <section class="contact section bd-container font-bold" id="contact">
+      <div class="contact__container bd-grid">
+        <div class="contact__data">
+          <span class="section-subtitle contact__initial">Let's talk</span>
+          <h2 class="section-title contact__initial">Contact us</h2>
+          <p class="font-semibold contact__description">
+            Please feel free to give your feedback to our service.
+            Your suggestions really helps us to improve.
+          </p>
+        </div>
+
+
+        <div class="contact__button">
+          <button class="button" onclick="toggleModal('modal-id')">
+            Contact us now
+          </button>
+        </div>
+        <div
+          class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center"
+          id="modal-id">
+          <div class="relative w-11/12 my-6 mx-auto max-w-3xl">
+            <!--content-->
+            <div
+              class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div class="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
+                <div class="flex-1 py-1">
+                  <h3 class="text-lg font-semibold">Contact Us</h3>
+                </div>
+                <div class="flex-1 py-1"><button
+                    class="ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                    onclick="toggleModal('modal-id')">
+                    <span class="bg-transparent text-black h-6 w-6 text-2xl block outline-none focus:outline-none">
+                      x
+                    </span>
+                  </button></div>
+              </div>
+              <form id="formElem" action="/contact_us" method="POST">
+                <div class="relative p-4 flex-auto">
+                  <div class="mb-4 hidden">
+                    <label class="block text-gray-700 text-sm text-left font-bold mb-2" for="username">
+                      Name
+                    </label>
+                    <input name="name"
+                      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      id="name" type="text" value="<%= user.name %>" placeholder="Enter your name" />
+                  </div>
+                  <div class="mb-4 hidden">
+                    <label class="block text-gray-700 text-sm text-left font-bold mb-2" for="username">
+                      Email
+                    </label>
+                    <input name="email"
+                      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      id="username" type="email" placeholder="Enter your email" value="<%= user.email %>" required />
+                  </div>
+                  <div class="mb-4">
+                    <label class="block text-gray-700 text-sm text-left font-bold mb-2" for="username">
+                      Write your feedback here
+                    </label>
+                    <textarea name="message"
+                      class="shadow appearance-none border rounded w-full h-24 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      id="username" placeholder="Please check your email for updates to your feedback.."></textarea>
+                  </div>
+                </div>
+                <div class="flex items-center justify-end p-6 py-1 border-t border-solid border-gray-300 rounded-b">
+                  <button type="submit" class="button" id="submitButton">
+                    Send
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
+      </div>
+      </div>
+    </section>
+    <% } %>
+      <script>
+        document.onreadystatechange = function() { 
+          setTimeout(() => {
+            if (document.readyState !== "complete") { 
+                document.querySelector( 
+                  "body").style.visibility = "hidden"; 
+                document.querySelector( 
+                  "#loading").style.visibility = "visible"; 
+            } else { 
+                document.querySelector( 
+                  "#loading").style.display = "none"; 
+                document.querySelector( 
+                  "body").style.visibility = "visible"; 
+            }
+          }, 1000);
+             
+        }; 
+        function toggleModal(modalID) {
+          event.preventDefault();
+          document.getElementById(modalID).classList.toggle("hidden");
+          document
+            .getElementById(modalID + "-backdrop")
+            .classList.toggle("hidden");
+          document.getElementById(modalID).classList.toggle("flex");
+          document.getElementById(modalID + "-backdrop").classList.toggle("flex");
+        }
+      </script>
+</body>
+
+</html>

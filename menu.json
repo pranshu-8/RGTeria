@@ -1,0 +1,398 @@
+[
+  {
+    "_id": {
+      "$oid":  "5eee651f739f8c674fd616e9"
+    },
+    "name": "Mixed Paratha",
+    "image": "mixedparatha.jpg",
+    "availibility":true,
+    "price": 30,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd617e9"
+    },
+    "name": "Aloo Paratha",
+    "image": "plate1.jpg",
+    "availibility":true,
+    "price": 25,
+    "count": 0
+  },
+  {
+    "_id": {
+      "$oid":"5eee651f739f8c674fd618e9"
+    },
+    "name": "Plain Paratha",
+    "image": "plate2.jpg",
+    "availibility":true,
+    "price": 10,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd619e9"
+    },
+    "name": "Paneer Paratha",
+    "image": "plate3.jpg",
+    "availibility":true,
+    "price": 35,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd620e9"
+    },
+    "name": "Kadhai Panner",
+    "image": "kadhai_paneer.jpg",
+    "availibility":true,
+    "price": 100,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd621e9"
+    },
+    "name": "Paneer Lababdar",
+    "image": "paneer_lavadar.jpg",
+    "availibility":true,
+    "price": 100,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd622e9"
+    },
+    "name": "Paneer Bhurji",
+    "image": "paneer_bhurji.jpg",
+    "availibility":true,
+    "price": 100,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd623e9"
+    },
+    "name": "Mattar Paneer",
+    "image": "mattar_paneer.jpg",
+    "availibility":true,
+    "price": 100,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd614e2"
+    },
+    "name": "Manchurian Fried Rice",
+    "image": "Manchurian_fried_rice.jpg",
+    "availibility":true,
+    "price": 65,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd615e2"
+    },
+    "name": "Manchurian noodles",
+    "image": "manchurian_noodles.jpg",
+    "availibility":true,
+    "price": 65,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd616e2"
+    },
+    "name": "Veg Maggie",
+    "image": "veg_maggie.jpg",
+    "availibility":true,
+    "price": 30,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd617e2"
+    },
+    "name": "Plain Maggie",
+    "image": "plain_maggie.jpg",
+    "availibility":true,
+    "price": 20,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid":"5eee651f739f8c674fd618e2"
+    },
+    "name": "Veg Rice",
+    "image": "veg_rice.jpg",
+    "availibility":true,
+    "price": 30,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd619e2"
+    },
+    "name": "veg Noodles",
+    "image": "veg_noodles.png",
+    "availibility":true,
+    "price": 30,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd620e2"
+    },
+    "name": "Plain Noodles",
+    "image": "plain_noodles.jpg",
+    "availibility":true,
+    "price": 50,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd621e2"
+    },
+    "name": "Paneer Maggie",
+    "image": "paneer_maggie.jpg",
+    "availibility":true,
+    "price": 50,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd622e2"
+    },
+    "name": "Paneer Rice",
+    "image": "paneer_rice.jpg",
+    "availibility":true,
+    "price": 50,
+    "count": 0
+
+  },
+
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd732ee"
+    },
+    "name": "Chicken Roll",
+    "image": "chicken_roll.jpg",
+    "availibility":true,
+    "price": 50,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd733ee"
+    },
+    "name": "Butter Chicken",
+    "image": "butter_chicken.jpg",
+    "availibility":true,
+    "price": 100,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd734ee"
+    },
+    "name": "Chicken Fry",
+    "image": "chicken_fry.jpg",
+    "availibility":true,
+    "price": 100,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd735ee"
+    },
+    "name": "Chicken Chilli",
+    "image": "chicken_chilli.jpg",
+    "availibility":true,
+    "price": 100,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd736ee"
+    },
+    "name": "Chicken Double Egg Roll",
+    "image": "chicken_double_egg_roll.jpg",
+    "availibility":true,
+    "price": 60,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd737ee"
+    },
+    "name": "Chicken Rice",
+    "image": "Chicken_rice.jpg",
+    "availibility":true,
+    "price": 70,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd738ee"
+    },
+    "name": "Chicken Noodles",
+    "image": "Chicken_noodles.jpg",
+    "availibility":true,
+    "price": 70,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd728ed"
+    },
+    "name": "Egg Roll",
+    "image": "egg_roll.jpg",
+    "availibility":true,
+    "price": 40,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd729ed"
+    },
+    "name": "Paneer Egg Roll",
+    "image": "Paneer_egg_roll.jpg",
+    "availibility":true,
+    "price": 50,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd730ed"
+    },
+    "name": "Egg Rice",
+    "image": "egg_rice.jpg",
+    "availibility":true,
+    "price": 40,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd731ed"
+    },
+    "name": "Bread Omellete",
+    "image": "bread_omellete.jpg",
+    "availibility":true ,
+    "price": 30,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd732ed"
+    },
+    "name": "Egg Maggie",
+    "image": "egg_maggie.jpg",
+    "availibility":true,
+    "price": 40,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd733ed"
+    },
+    "name": "Egg Noodles",
+    "image": "egg_noodles.jpg",
+    "availibility":true,
+    "price": 40,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd734ed"
+    },
+    "name": "Egg Bhurji",
+    "image": "egg_bhurji.jpg",
+    "availibility":true,
+    "price": 30,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd735ed"
+    },
+    "name": "Boiled Egg",
+    "image": "boiled_egg.jpg",
+    "availibility":true,
+    "price": 10,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd731ef"
+    },
+    "name": "Paneer Roll",
+    "image": "paneer_roll.jpg",
+    "availibility":true,
+    "price": 40,
+    "count": 0
+
+  
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd732ef"
+    },
+    "name": "Veg Roll",
+    "image": "veg_roll.jpg",
+    "availibility":true,
+    "price": 20,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd733ef"
+    },
+    "name": "Dry Manchurian",
+    "image": "dry_manchurian.jpg",
+    "availibility":true,
+    "price": 50,
+    "count": 0
+
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd734ef"
+    },
+    "name": "Paneer Chili",
+    "image": "Paneer_chilli.jpg",
+    "availibility":true,
+    "price": 80,
+    "count": 0
+  }
+]
