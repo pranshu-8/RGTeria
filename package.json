@@ -1,7 +1,7 @@
 {
   "name": "rgipt-food-cafeteria-app",
   "version": "1.0.0",
-  "description": "This is a.",
+  "description": "This is a food booking app.",
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
