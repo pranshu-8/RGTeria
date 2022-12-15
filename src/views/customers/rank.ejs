@@ -1,17 +1,19 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   </head>
   <link
     href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
     rel="stylesheet"
   />
   <body>
+    <% var test =foods; %>
+    <% var total =totalOrders; %>
     <section class="orders section light-section">
       <div class="container max-w-max mx-auto px-3">
-        <h1 class="font-bold text-lg mb-4 underline md:text-2xl">Here is this week's Rank List </h1>
+        <h1 class="font-bold text-green-700 text-lg mb-4 underline md:text-2xl">Rank List</h1>
         <% if(messages.success) { %>
         <div
           id="success-alert"
@@ -30,36 +32,58 @@
           <p><%= messages.success %>😊</p>
         </div>
         <% } %>
-        <table class="w-full table-auto ">
-          <thead class="text-green-700">
-            <tr>
-              <th class="px-4 py-2 text-left ">Food Name</th>
-              
-              <th class="px-4 py-2 text-left">Total Sale count this week</th>
-            </tr>
-          </thead>
-          <tbody class="text-black">
-            <% if(foods.length) { %> <% foods.forEach((order) => {
-              %>
-            <tr>
-              <td class="border px-4 py-2">
-                <a class=" text-gray-500  link font-bold px-4 py-2" href="/menu"
-                  ><%= order.name %></a
-                >
-              </td>
-
-              <td class="border px-4 py-2 ">
-                <p class="text-blue-500 font-semibold"><%= order.count %></p>
-              </td>
-            </tr>
-            <% }) %> <% } else { %>
-            <tr>
-              <td class="p-4"><span>No food item found!</span></td>
-            </tr>
-            <% } %>
-          </tbody>
-        </table>
-      </div>
-    </section>
+    <div class=" container max-w-max mx-auto" id="top_x_div" style="width: 900px; height: 800px;"></div>
   </body>
+  <script type="text/javascript">
+          var getTest = "<%= test  %>"; 
+          var totals= "<%= total  %>";
+          let ind1=0
+          let ind2=0;
+          let ct=0;
+          let arr=[]
+          let num=[]
+          
+          while(ind2<getTest.length){
+            if(getTest[ind2]===','){
+            ct++;
+            let result = getTest.substring(ind1, ind2);
+            num.push(result)
+            ind2++;
+            ind1=ind2;
+           }
+            if(ct==2){
+              ct=0;
+              arr.push(num);
+              num=[]
+            }
+            ind2++;
+          }
+          arr.re
+     google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawStuff);
+
+    function drawStuff() {
+     
+
+      var data = new google.visualization.arrayToDataTable(arr);
+       var options = {
+        title: 'Food Item Sale Count',
+        width: 900,
+        legend: { position: 'none' },
+        chart: { title: 'Food Item Sale Count',
+                 subtitle: 'Popularity by count' },
+        bars: 'horizontal', // Required for Material Bar Charts.
+        axes: {
+          x: {
+            0: { side: 'top', label: 'Count'} // Top x-axis.
+          }
+        },
+        bar: { groupWidth: "90%" }
+      };
+
+      var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+      chart.draw(data, options);
+    };
+  </script>
 </html>
+
