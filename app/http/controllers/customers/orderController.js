@@ -153,8 +153,10 @@ function orderContoller() {
       // {
       // console.log("mismatched signature")
       // }
-
-
+      const order = new Order({
+        customerId: req.user._id,
+        items: req.session.cart.items,
+        });
         order
           .save()
           .then((result) => {

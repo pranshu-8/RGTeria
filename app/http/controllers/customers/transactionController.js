@@ -70,7 +70,7 @@ var getAllresponse = JSON.parse(JSON.stringify(req.body));
 
               var isVerifySignature=PaytmChecksum.verifySignature(JSON.stringify(res_obj.body),process.env.MERCHANT_KEY,res_obj.head.signature)
               if(isVerifySignature){
-
+             return res.status.json({res_obj,order})
               }
               else{
                 console.log("Signature mismatched")
@@ -90,3 +90,4 @@ var getAllresponse = JSON.parse(JSON.stringify(req.body));
 
 
 }}}
+module.exports=transactionController

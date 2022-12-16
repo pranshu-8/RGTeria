@@ -8,6 +8,7 @@ const availableController = require("../app/http/controllers/admin/availableCont
 const newitemController = require("../app/http/controllers/admin/newitemController");
 const redirectController = require("../app/http/controllers/admin/redirectController");
 const paytmController = require("../app/http/controllers/customers/paytmController");
+const transactionController = require("../app/http/controllers/customers/transactionController");
 const passport = require("passport");
 // middlewares
 const check = require("../app/http/middleware/check");
@@ -41,6 +42,7 @@ const initRoutes = (app) => {
   app.get("/rank",cartController().rank)
   // customer/order routes
   app.post("/orders", auth, orderController().store);
+  app.post("/transaction", auth, transactionController().index);
   app.get("/customer/orders", auth, check, orderController().index);
   app.get("/customer/orders/:id", auth, orderController().show);
   app.get("/customer/paytmToken", auth, paytmController().index);

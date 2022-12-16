@@ -1,6 +1,7 @@
 const https = require('https');
 const PaytmChecksum = require('paytmchecksum');
-function paytmContoller() {
+const Order = require("../../../models/order");
+function paytmController() {
     return {
       async index(req, res) {
 const order = new Order({
@@ -14,7 +15,6 @@ paytmParams.body = {
     "mid"           : process.env.MID,
     "websiteName"   : "WEBSTAGING",
     "orderId"       : order._id,
-    "callbackUrl"   : "http://localhost:5000/orders",
     "txnAmount"     : {
         "value"     : req.session.cart.totalPrice,
         "currency"  : "INR",
@@ -28,6 +28,7 @@ paytmParams.body = {
 * Generate checksum by parameters we have in body
 * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
 */
+var get_res;
 PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), process.env.MERCHANT_KEY).then(function(checksum){
 
     paytmParams.head = {
@@ -63,18 +64,18 @@ PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), process.env.ME
         });
 
         post_res.on('end', function(){
-            var get_res=JSON.parse(response)
-            console.log('Response: ', response);
+            get_res=JSON.parse(response)
+            console.log('Response: ', get_res);
         });
     });
-    var isVerifySignature = PaytmChecksum.verifySignature(get_res.body,process.env.MERCHANT_KEY,get_res.head.signature);
-    if (isVerifySignature) {
-        return res.json({   get_res, order,mid: process.env.MID,key: process.env.MERCHANT_KEY,bill: req.session.cart.totalPrice });
-    } else {
-        System.out.append("Checksum Mismatched");
-    }
+    // var isVerifySignature = PaytmChecksum.verifySignature(response.body,process.env.MERCHANT_KEY,response.head.signature);
+    // if (isVerifySignature) {
+    //     return res.json({   get_res: response, order,mid: process.env.MID,key: process.env.MERCHANT_KEY,bill: req.session.cart.totalPrice });
+    // } else {
+    //     System.out.append("Checksum Mismatched");
+    // }
     post_req.write(post_data);
     post_req.end();
 });
 }}}
-module.exports= paytmContoller
+module.exports= paytmController

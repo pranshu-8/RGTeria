@@ -29,7 +29,7 @@ async function initStripe() {
         })
      });
   }
-}
+
 function initiateClient(order,get_res,mid,key,bill){
   const script=document.createElement('script');
   script.crossOrigin="anonymous"
@@ -72,6 +72,7 @@ function initiateClient(order,get_res,mid,key,bill){
     }
   }
   document.body.appendChild(script)
+}
 }
 module.exports= initStripe
 
