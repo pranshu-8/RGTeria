@@ -5,7 +5,6 @@ const Noty =require("noty");
   axios
     .post("/orders", formObject)
     .then((res) => {
-      console.log("ae munde paagal ")
       new Noty({
         type: "success",
         timeout: 1000,
@@ -18,7 +17,7 @@ const Noty =require("noty");
     })
     .catch((err) => {
       new Noty({
-        type: "success",
+        type: "error",
         timeout: 1000,
         text: err.res.data.message,
         progressBar: false,

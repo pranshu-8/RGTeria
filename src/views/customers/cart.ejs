@@ -5,40 +5,6 @@
     <meta http-equiv="refresh" content="8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/>
-    <script type="application/javascript" src="{HOST}/merchantpgpui/checkoutjs/merchants/{MID}.js" onload="onScriptLoad();" crossorigin="anonymous"></script>
-    <script>
-    function onScriptLoad(){
-    var config = {
-    "root": "",
-    "flow": "DEFAULT",
-    "data": {
-    "orderId": "", /* update order id */
-    "token": "", /* update token value */
-    "tokenType": "TXN_TOKEN",
-    "amount": "" /* update amount */
-    },
-    "handler": {
-    "notifyMerchant": function(eventName,data){
-    console.log("notifyMerchant handler function called");
-    console.log("eventName => ",eventName);
-    console.log("data => ",data);
-    }
-    }
-    };
-    if(window.Paytm && window.Paytm.CheckoutJS){
-    window.Paytm.CheckoutJS.onLoad(function excecuteAfterCompleteLoad() {
-    // initialze configuration using init method
-    window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
-    // after successfully updating configuration, invoke JS Checkout
-    window.Paytm.CheckoutJS.invoke();
-    }).catch(function onError(error){
-    console.log("error => ",error);
-    });
-    });
-    }
-    }
-    </script>
-
   </head>
   <link
     href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
@@ -200,5 +166,6 @@
       </div>
       <% } %>
     </section>
+    
   </body>
 </html>

@@ -1,5 +1,7 @@
  const { json } = require("express");
 const mongoose= require("mongoose")
+const https = require('https');
+const PaytmChecksum = require('paytmchecksum');
 const User = require("../../../models/user");
 const Menu=  require("../../../models/menu");
 const cartController = () => {
@@ -32,6 +34,8 @@ const cartController = () => {
         ct=ct+1;
 
       }
+    
+
       res.render("customers/cart", {statuss});
     },
     update: (req, res) => {
