@@ -13,8 +13,9 @@ var paytmParams = {};
 paytmParams.body = {
     "requestType"   : "Payment",
     "mid"           : process.env.MID,
-    "websiteName"   : "WEBSTAGING",
+    "websiteName"   : process.env.WEBSITE_NAME,
     "orderId"       : order._id,
+    "callbackURL"   : "https://localhost:5000/transaction",
     "txnAmount"     : {
         "value"     : req.session.cart.totalPrice,
         "currency"  : "INR",
@@ -33,8 +34,6 @@ PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), process.env.ME
 
     paytmParams.head = {
         "signature"    : checksum,
-        "channelId" : "WEB",
-        "version": "v1"
     };
 
     var post_data = JSON.stringify(paytmParams);
@@ -45,7 +44,7 @@ PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), process.env.ME
         hostname: 'securegw-stage.paytm.in',
 
         /* for Production */
-        // hostname: 'securegw.paytm.in',
+         // hostname: 'securegw.paytm.in',
 
         port: 443,
         path: `/theia/api/v1/initiateTransaction?mid=${process.env.MID}&orderId=${order._id}`,
@@ -56,8 +55,12 @@ PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), process.env.ME
         }
     };
 
-    var response = "";
- 
+    // var body = "{"\mid\":"\YOUR_MID_HERE\","\orderId\":"\YOUR_ORDER_ID_HERE\"}";
+
+    /* checksum that we need to verify */
+
+var response=""
+    /* checksum that we need to verify */
     var post_req = https.request(options, function(post_res) {
         post_res.on('data', function (chunk) {
             response += chunk;
@@ -65,15 +68,21 @@ PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), process.env.ME
 
         post_res.on('end', function(){
             get_res=JSON.parse(response)
-            console.log('Response: ', get_res);
+            //console.log('Response: ', get_res.body.txnToken);
+                var isVerifySignature = PaytmChecksum.verifySignature(JSON.stringify(get_res.body),process.env.MERCHANT_KEY,get_res.head.signature);
+     if (isVerifySignature) {
+        if(get_res.body.resultInfo.resultStatus==="S"){
+                  return res.json({get_res,order});
+        }
+        else{
+            res.redirect("/menu")
+        }
+        } else {
+        System.out.append("Checksum Mismatched");
+    }
         });
     });
-    // var isVerifySignature = PaytmChecksum.verifySignature(response.body,process.env.MERCHANT_KEY,response.head.signature);
-    // if (isVerifySignature) {
-    //     return res.json({   get_res: response, order,mid: process.env.MID,key: process.env.MERCHANT_KEY,bill: req.session.cart.totalPrice });
-    // } else {
-    //     System.out.append("Checksum Mismatched");
-    // }
+
     post_req.write(post_data);
     post_req.end();
 });
