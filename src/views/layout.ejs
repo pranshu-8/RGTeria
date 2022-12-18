@@ -7,15 +7,17 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/>
   <title>RGTeria</title>
   <link rel="stylesheet" href="/css/app.css" />
+
   <!-- // <link rel="shortcut icon" href="/img/logo.jpg" type="image/x-icon"> -->
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <!--========== BOX ICONS ==========-->
   <link rel="stylesheet"
     href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
   <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet" />
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
 </head>
 
-<body>
+<body >
   <!-- <div id="loading"></div> -->
   <!--========== SCROLL TOP ==========-->
   <a href="#" class="scrolltop" id="scroll-top">
@@ -29,7 +31,7 @@
       if(user?.role==="admin") {temp='/admin/orders';}
       else temp='/';
       %>
-      <a  class="nav__logo" href= <%= temp %> ><img width="110px" src="/img/logo.png" alt="logo.png" /></a>
+      <a class="nav__logo" href= <%= temp %> ><img  width="100px" src="/img/logo.png" alt="logo.png" /></a>
 
       <div class="nav__menu " id="nav-menu">
         <ul class="nav__list">
@@ -68,14 +70,14 @@
 
                 </li>
                 <li class="nav__cart nav__item">
-                  <a  class="shopping__cart nav__link active-link rounded-full flex items-center">
+                  <a  class="nav__link active-link rounded-full flex items-center">
                     <img class="nav__link active-link" src="/img/customer.png" alt="customer.png" />
                   </a>
                   </li>
                 </li>
                 <% } else { %>
                     <li class="nav__item">
-                      <a class="shopping__cart nav__link active-link rounded-full flex" href="/login">Login🤗</a>
+                      <a class=" nav__link active-link " href="/login">Login🤗</a>
                     </li>
                     <% } %>
                     <% if(user?.role!="admin" ) { %>
@@ -138,6 +140,7 @@
 
   <main class="l-main"></main>
   <!--========== HOME ==========-->
+  
   <%- body %>
     </main>
 

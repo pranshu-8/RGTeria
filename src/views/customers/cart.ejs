@@ -85,7 +85,7 @@
                         <div class="mt-4">
                           <div id="card-element" class="w-11/12 m-auto border-gray-400"></div>
                           <button
-                            class="focus:outline-none btn-primary px-6 py-2 rounded-full text-white font-bold mt-6"
+                            class="transform px-6 py-2 rounded-full bg-indigo-600 button"
                             onclick="startPayment()">
                             <span id="pay-st"> Order Now </span>
                           </button>
@@ -101,7 +101,7 @@
 
                           <% } else { %>
                             <div id="card-element"
-                              class="w-11/12 m-auto text-red-800 font-bold border-gray-400 px-6 py-2 rounded-full focus:outline-none border bg-gray-200">
+                              class="w-11/12 m-auto text-white mt-5 font-bold border-gray-400 bg-red-600 px-6 py-2 rounded-full focus:outline-none border bg-gray-200">
                               <p> Bookings Closed. 😔</p>
                               <p>We will be back shortly.</p>
                               <p> Sorry for the inconvenience.</p>
@@ -112,7 +112,7 @@
                                 <div class="mt-4">
                                   <div id="card-element" class="w-11/12 m-auto border-gray-400"></div>
                                   <button
-                                    class="focus:outline-none btn-primary px-6 py-2 rounded-full text-white font-bold mt-6"
+                                    class=" px-6 py-2 rounded-full  bg-indigo-600 button mt-5"
                                     type="submit">
                                     Clear Cart
                                   </button>
@@ -121,7 +121,7 @@
                 </div>
                 <% } else { %>
                   <a href="/login"
-                    class="inline-block cursor-pointer btn-primary px-6 py-2 text-white rounded-full font-bold mt-6">Login
+                    class="transform px-6 py-2 rounded-full button bg-indigo-600 mt-6">Login
                     to continue
                   </a>
                   <% } %>
@@ -138,7 +138,7 @@
               To order the stuff, go to the main page.
             </p>
             <img class="w-1/2 md:w-1/5 mx-auto" src="/img/empty-cart.png" alt="empty-cart" />
-            <a href="/" class="inline-block px-6 py-2 rounded-full btn-primary text-white font-bold mt-12">Go back</a>
+            <a href="/" class="font-bold transform px-6 py-2 rounded-full  bg-green-600 button  mt-12">Go back</a>
           </div>
         </div>
         <% } %>
