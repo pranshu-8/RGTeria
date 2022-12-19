@@ -318,7 +318,7 @@
     const loader = document.getElementById('pay-st')
     loader.innerHTML = "Paytm Checkout Loading..."
 
-    const response = await fetch(`${baseUrl}/customer/paytmToken`, {
+    const response = await fetch(`/customer/paytmToken`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
