@@ -15,7 +15,7 @@ paytmParams.body = {
     "mid"           : process.env.MID,
     "websiteName"   : process.env.WEBSITE_NAME,
     "orderId"       : order._id,
-    "callbackURL"   : "https://localhost:5000/transaction",
+    "callbackURL"   : "/transaction",
     "txnAmount"     : {
         "value"     : req.session.cart.totalPrice,
         "currency"  : "INR",

@@ -186,7 +186,7 @@
             window.Paytm.CheckoutJS.close();
             if (data.STATUS === "TXN_SUCCESS") {
 
-              const response = await fetch(`http://localhost:5000/customer/transaction`, {
+              const response = await fetch(`/customer/transaction`, {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'
@@ -195,7 +195,7 @@
               })
               response.json().then(async (data) => {
                 //order is generated successfully
-                const resp = await fetch(`http://localhost:5000/orders`, {
+                const resp = await fetch(`/orders`, {
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json'
@@ -227,7 +227,7 @@
 
             } else if (data.STATUS === 'TXN_FAILURE') {
               msg='Payment failed. Please reorder.'
-              const resp = await fetch(`http://localhost:5000/payFail`, {
+              const resp = await fetch(`/payFail`, {
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json'
@@ -235,7 +235,7 @@
                 })
 
             } else {
-              const resp = await fetch(`http://localhost:5000/payFail`, {
+              const resp = await fetch(`/payFail`, {
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json'
