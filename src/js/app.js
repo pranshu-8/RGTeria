@@ -191,8 +191,11 @@ if (alertMsg) {
 // change order status
 let statuses = document.querySelectorAll(".status_line");
 let hiddenInput = document.querySelector("#hiddenInput");
+var hiddenInputs = document.querySelector("#hiddenInputs");
 let order = hiddenInput ? hiddenInput.value : null;
 order = JSON.parse(order);
+let customers = hiddenInput ? hiddenInputs.value : null;
+customers= JSON.parse(customers)
 let time = document.createElement("small");
 
 function updateStatus(order) {
@@ -229,6 +232,9 @@ let socket = io();
 if (order) {
   socket.emit("join", `order_${order._id}`);
 }
+if (customers) {
+  socket.emit("join", `customers_${customers._id}`);
+}
 let adminAreaPath = window.location.pathname;
 if (adminAreaPath.includes("admin")) {
   initAdmin(socket);
@@ -247,7 +253,6 @@ socket.on("orderUpdated", (data) => {
     progressBar: false,
   }).show();
 });
-
 socket.on("bookingresumed", (data) => {
   new Noty({
     type: "success",
@@ -262,6 +267,14 @@ socket.on("bookingclosed", (data) => {
     type: "error",
     timeout: 1000,
     text: data,
+    progressBar: false,
+  }).show();
+});
+socket.on("orderplacedUser", (data) => {
+  new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
+    type: "success",
+    timeout: 2000,
+    text: "Order Placed Successfully",
     progressBar: false,
   }).show();
 });

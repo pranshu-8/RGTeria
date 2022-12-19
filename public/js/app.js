@@ -2523,8 +2523,11 @@ function initAdmin(socket) {
 
                 var statuses = document.querySelectorAll(".status_line");
                 var hiddenInput = document.querySelector("#hiddenInput");
+                var hiddenInputs = document.querySelector("#hiddenInputs");
                 var order = hiddenInput ? hiddenInput.value : null;
                 order = JSON.parse(order);
+                var customers = hiddenInputs ? hiddenInputs.value : null;
+                customers= JSON.parse(customers)
                 var time = document.createElement("small");
                 function updateStatus(order) {
                     statuses.forEach(function (status) {
@@ -2560,7 +2563,9 @@ function initAdmin(socket) {
                 if (order) {
                     socket.emit("join", "order_".concat(order._id));
                 }
-
+                if (customers) {
+                    socket.emit("join", "customers_".concat(customers._id));
+                }
                 var adminAreaPath = window.location.pathname;
 
                 if (adminAreaPath.includes("admin")) {
@@ -2590,7 +2595,14 @@ function initAdmin(socket) {
                       progressBar: false,
                     }).show();
                   });
-                  
+                  socket.on("orderplacedUser", (data) => {
+                    new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
+                      type: data.type,
+                      timeout: 8000,
+                      text: data.message,
+                      progressBar: false,
+                    }).show();
+                  });
                   socket.on("bookingclosed", (data) => {
                     new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
                       type: "error",

@@ -41,7 +41,7 @@ const initRoutes = (app) => {
   app.get("/rank",cartController().rank)
   // customer/order routes
   app.post("/orders", auth, orderController().store);
-
+  app.post("/payFail", auth, orderController().failure);
   app.get("/customer/orders", auth, check, orderController().index);
   app.get("/customer/orders/:id", auth, orderController().show);
   app.post("/customer/paytmToken", auth,paypage ,paytmController().index);
