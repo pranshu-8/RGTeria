@@ -16,7 +16,7 @@ const guest = require("../app/http/middleware/guest");
 const auth = require("../app/http/middleware/auth");
 const admin = require("../app/http/middleware/admin");
 const paypage = require("../app/http/middleware/paypage");
-require("../../RGTeria/app/config/passport.js")
+require("../app/config/passport")
 
 const initRoutes = (app) => {
   // routes
