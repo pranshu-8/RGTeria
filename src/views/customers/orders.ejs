@@ -71,11 +71,25 @@
                    <p class="text-blue-600  font-semibold">Total Bill: ₹ <%= total%></p>
               </td>
 <%   
-var s = moment(order.createdAt).format('hh:mm A').toLocaleString(undefined, {timeZone: 'Asia/Kolkata'});
+var s = moment(order.createdAt).format('hh:mm:ss A');
+var p=moment(order.createdAt). format('MM/DD/YYYY')
+p= p + " "+ s +" UTC";
+var dates = new Date(p);
+function formatAMPM(date) {
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var ampm = hours >= 12 ? 'pm' : 'am';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  minutes = minutes < 10 ? '0'+minutes : minutes;
+  var strTime = hours + ':' + minutes + ' ' + ampm;
+  return strTime;
+}
+let k =formatAMPM(dates)
 %>
               <td class="border px-4 py-2 text-green-600 font-semibold">
-                 Time : <%= s %> </br>
-                 Date : <%=  moment(order.createdAt). format('DD-MM-YYYY')%>
+                 Time : <%=k%> </br>
+                 Date : <%= dates.getDate()%>/<%=dates.getMonth()%>/<%= dates.getFullYear() %>
               </td>
             </tr>
             <% }) %> <% } else { %>
