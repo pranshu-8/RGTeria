@@ -2,8 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </head>
+    <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport' />  <title>RGTeria</title>  </head>
   <link
     href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
     rel="stylesheet"
@@ -71,9 +70,11 @@
                    <% }%>
                    <p class="text-blue-600  font-semibold">Total Bill: ₹ <%= total%></p>
               </td>
-
+<%   
+var s = moment(order.createdAt).format('hh:mm A').toLocaleString(undefined, {timeZone: 'Asia/Kolkata'});
+%>
               <td class="border px-4 py-2 text-green-600 font-semibold">
-                 Time : <%= moment(order.createdAt).format('hh:mm A') %> </br>
+                 Time : <%= s %> </br>
                  Date : <%=  moment(order.createdAt). format('DD-MM-YYYY')%>
               </td>
             </tr>
