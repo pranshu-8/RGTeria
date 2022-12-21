@@ -36,47 +36,47 @@
         <ul class="nav__list">
             <% if(user?.role!="admin" ) { %>
           <li class="nav__item">
-            <a href="/" class="hover:text-green-800 nav__link active-link">Home🏠</a>
+            <a href="/" class="rounded-full hover:text-green-800 nav__link active-link">Home🏠</a>
           </li>
           <li class="nav__item">
-            <a href="/menu" class="hover:text-green-800 nav__link active-link">Menu🍔</a>
+            <a href="/menu" class="rounded-full hover:text-green-800 nav__link active-link">Menu🍔</a>
           </li>
           <% } %>
 
           <% if(user) { %>
             <% if(user.role==="customer" ) { %>
             <li class="nav__item">
-              <a href="/customer/orders" class="hover:text-green-800 nav__link active-link">Orders🤤</a>
+              <a href="/customer/orders" class="rounded-full hover:text-green-800 nav__link active-link">Orders🤤</a>
             </li>
             
             <% } 
             else { %>
               <li class="nav__item">
-                <a href="/admin/newitem" class="hover:text-green-700 nav__link active-link">Special Controls🗿</a>
+                <a href="/admin/newitem" class="rounded-full hover:text-green-700 nav__link active-link">Special Controls🗿</a>
               </li>
               <li class="nav__item">
-                <a href="/admin/orders" class="hover:text-green-700 nav__link active-link">Orders👨‍🍳</a>
+                <a href="/admin/orders" class="rounded-full hover:text-green-700 nav__link active-link">Orders👨‍🍳</a>
               </li>
               <li class="nav__item">
-                <a href="/admin/available" class="hover:text-green-700 nav__link active-link">Control Menu 👨‍🔧</a>
+                <a href="/admin/available" class="rounded-full hover:text-green-700 nav__link active-link">Control Menu 👨‍🔧</a>
               </li>
                <% } %>
-                <li class="nav__item">
+                <li class="nav__item ">
                   <form id="logout" action="/logout" method="POST">
-                    <a class="hover:text-green-800 nav__link active-link" onclick="document.getElementById('logout').submit()"
+                    <a class="rounded-full hover:text-green-800 nav__link active-link" onclick="document.getElementById('logout').submit()"
                       href="#">Logout👀</a>
                   </form>
 
                 </li>
-                <li class="nav__cart nav__item">
+                <!-- <li class="nav__cart nav__item">
                   <a  class="nav__link active-link rounded-full flex items-center">
                     <img class="nav__link active-link" src="/img/customer.png" alt="customer.png" />
                   </a>
                   </li>
-                </li>
+                </li> -->
                 <% } else { %>
                     <li class="nav__item">
-                      <a class=" nav__link active-link " href="/login">Login🤗</a>
+                      <a class="rounded-full nav__link active-link " href="/login">Login🤗</a>
                     </li>
                     <% } %>
                     <% if(user?.role!="admin" ) { %>
@@ -85,11 +85,12 @@
                           <span id="cartCounter" class="font-bold">
                             <%= session.cart ? session.cart.totalQty : '' %>
                           </span>
-                          <img class="nav__link active-link" src="/img/cart1.png" alt="cart.png" />
+                          <img class=" active-link" src="/img/cart1.png" alt="cart.png" />
                         </a>
                       </li>
                       <% } %>
                       <li ><i class="bx bx-moon change-theme" id="theme-button"></i></li>
+
         </ul>
       </div>
 
@@ -153,7 +154,7 @@
     <footer class="footer section bd-container">
       <div class="footer__container bd-grid">
         <div class="footer__content">
-          <a href="#" class="footer__logo">RGIPT Cafeteria Food</a>
+          <a href="#" class="footer__logo">RGIPT Cafeteria</a>
           <span class="footer__description">Jaiswal Caterers</span>
           <!-- <h3 class="footer__title">Services</h3>
           <ul>
@@ -185,7 +186,7 @@
 
         <div class="footer__content">
           <h3 class="footer__title">Secured by     <p></p>   OWASP RGIPT</h3>
-         <a href="https://owasp.org/www-chapter-rajiv-gandhi-institute-of-petroleum-technology/" target="_blank" rel="noopener noreferrer"><img  style="border-radius: 14%;" width="200px" src="/img/owasp.jpg" alt="owasp.jpg" /></a> 
+         <a href="https://owasp.org/www-chapter-rajiv-gandhi-institute-of-petroleum-technology/" target="_blank" rel="noopener noreferrer"><img  style="border-radius: 14%;" width="100px" src="/img/owasp.jpg" alt="owasp.jpg" /></a> 
 
         </div>
       </div>

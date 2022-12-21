@@ -54,7 +54,7 @@ function orderContoller() {
                   let obj = req.session.cart.items
                   for (set in obj) {
                     (async () => {
-                      let new_count = obj[set].item.count + obj[set].qty
+                      let new_count = obj[set].item.count + 1
 
                       try {
                         await Menu.findOneAndUpdate({ name: obj[set].item.name }, { count: new_count }, { useFindAndModify: false });

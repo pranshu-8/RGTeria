@@ -49,7 +49,7 @@
             <div class="text-center relative md:static py-4">
               <div class="">
                 <span class="text-lg font-bold">Total Amount:</span>
-                <span class="amount text-2xl font-bold ml-4 text-green-400 md:text-3xl">₹ <%= session.cart.totalPrice%>
+                <span class="amount text-2xl font-bold ml-4 text-green-500 md:text-3xl">₹ <%= session.cart.totalPrice%>
                 </span>
               </div>
               <% if(user) { %>
@@ -82,7 +82,7 @@
                     required
                   /> -->
                       <% if(user.book!=false && statuss!=false){ %>
-                        <div class="mt-4">
+                        <div class="mt-11">
                           <div id="card-element" class="w-11/12 m-auto border-gray-400"></div>
                           <button
                             class="transform px-6 py-2 rounded-full bg-indigo-600 button"
@@ -208,7 +208,7 @@
                   if (data.redirects === true) {
                     setTimeout(() => {
           window.location.href = "/customer/orders";
-        }, 2000);
+        }, 1500);
                   }
                 }).catch(error => {
                   console.log(error)
@@ -311,7 +311,6 @@
     //call api to start payment
     const loader = document.getElementById('pay-st')
     loader.innerHTML = "Paytm Checkout Loading..."
-
     const response = await fetch(`/customer/paytmToken`, {
       method: 'POST',
       headers: {
