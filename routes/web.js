@@ -37,6 +37,8 @@ const initRoutes = (app) => {
   app.get("/cart", cartController().index);
   app.post("/update-cart", cartController().update);
   app.post("/remove-cart", cartController().remove);
+  app.post("/minus-cart", cartController().minus);
+  app.post("/plus-cart", cartController().plus);
   app.get("/clear", cartController().clear);
   // rank
   app.get("/rank",cartController().rank)
