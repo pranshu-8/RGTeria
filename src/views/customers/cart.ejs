@@ -40,6 +40,11 @@
                     </div>
                     <span class="hidden md:inline flex-1">Pcs <%= food.qty%></span>
                     <span class="font-bold text-lg">₹ <%= food.item.price%></span>
+                    <button
+                    data-food="<%= JSON.stringify(food) %>"
+                    class="removed rounded-full px-6 py-3 ml-12 " >
+                    <span class="text-white">🗑️</span>
+                  </button>
                   </div>
                   <% } %>
             </div>
@@ -85,7 +90,7 @@
                         <div class="mt-11">
                           <div id="card-element" class="w-11/12 m-auto border-gray-400"></div>
                           <button
-                            class="transform px-6 py-2 rounded-full bg-indigo-600 button"
+                            class="transform px-8 py-3 rounded-full bg-indigo-600 text-white"
                             onclick="startPayment()">
                             <span id="pay-st"> Order Now </span>
                           </button>
@@ -111,7 +116,7 @@
                                 <div class="mt-4">
                                   <div id="card-element" class="w-11/12 m-auto border-gray-400"></div>
                                   <button
-                                    class=" px-6 py-2 rounded-full  bg-indigo-600 button mt-5"
+                                    class=" px-6 py-2 rounded-full  bg-indigo-600 text-white mt-5"
                                     type="submit">
                                     Clear Cart
                                   </button>
@@ -144,6 +149,7 @@
   </section>
 
 </body>
+
 <script>
     var mid = "<%= mid  %>";
   const baseUrl = "http://localhost:5000"
@@ -333,5 +339,9 @@
 
   }
 </script>
+<script>
+  function deletes(){
 
+  }
+</script>
 </html>

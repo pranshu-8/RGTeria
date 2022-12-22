@@ -157,6 +157,8 @@ const updateCart = (food) => {
 
 };
 
+
+
 addToCart.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -164,13 +166,43 @@ addToCart.forEach((btn) => {
     updateCart(food);
   });
 });
-repeatCart.forEach((btn) => {
+let amounts = document.querySelectorAll(".amount");
+const removeCart = (food) => {
+  // axios
+  axios
+    .post("/remove-cart", food)
+    .then((res) => {
+      cartCounter.innerText = res.data.totalqty.totalQty;
+      amounts.innerText= "50"
+      let sendmsg= food.item.name + " removed from cart"
+      new Noty({
+        type: "success",
+        timeout: 1000,
+        text: sendmsg,
+        progressBar: false,
+      }).show();
+    })
+    .catch((err) => {
+      new Noty({
+        type: "error",
+        timeout: 1000,
+        text: "Something went wrong",
+        progressBar: false,
+      }).show();
+    });
+
+};
+
+let removed = document.querySelectorAll(".removed");
+removed.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     e.preventDefault();
     let food = JSON.parse(btn.dataset.food);
-    updateCart(food);
+    removeCart(food);
   });
 });
+
+
 let unavailBtn =document.querySelectorAll(".unavail");
 const unavailNoty = () => {
       new Noty({

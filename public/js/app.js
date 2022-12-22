@@ -2493,6 +2493,47 @@ function initAdmin(socket) {
                     });
 
                 }); 
+                // remove item from cart
+                let amountDisplay = document.querySelectorAll(".amount");
+                const removeCart = (food) => {
+                    // axios
+                    axios__WEBPACK_IMPORTED_MODULE_0___default().post("/remove-cart", food).then(function (res) {
+                        cartCounter.innerText = res.data.totalqty.totalQty;
+                        amountDisplay.innerText=res.data.totalPrices
+                        let sendmsg= food.item.name + " removed from cart"
+                        new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
+                          type: "success",
+                          timeout: 1000,
+                          text: sendmsg,
+                          progressBar: false,
+                        }).show();
+                      })
+                      .catch((err) => {
+                        new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
+                          type: "error",
+                          timeout: 1000,
+                          text: "Something went wrong",
+                          progressBar: false,
+                        }).show();
+                      });
+                  
+                  };
+                  
+                  let removed = document.querySelectorAll(".removed");
+                  removed.forEach((btn) => {
+                    btn.addEventListener("click", (e) => {
+                      e.preventDefault();
+                      let food = JSON.parse(btn.dataset.food);
+                      removeCart(food);
+                       
+                        setTimeout(function () {
+                            window.location.reload(); 
+                        }, 500);
+
+                    });
+                  });
+
+
                 // unavailable notifications
 
                 let unavailBtn =document.querySelectorAll(".unavail");
