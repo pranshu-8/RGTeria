@@ -16,13 +16,19 @@ const homeController = () => {
     index: async (req, res) => {
       let users=req?.user?.role
       users==="customer"?users=req.users:users=false;
-      const food = await Menu.find().sort({count: -1}).limit(3);
-      let foods={
-        top: food[0],
-        middle: food[1],
-        bottom: food[2]
-      }
-      return res.render("home", { foods: foods} );
+      let food = await Menu.find().sort({count: -1});
+      let veg=[];
+      let non_veg=[];
+      food.forEach(function(foodies) {
+        if(foodies.id[foodies.id.length-1]==='d' || foodies.id[foodies.id.length-1]==='e') {
+            non_veg.push(foodies)
+        }
+        else{
+          veg.push(foodies)
+        }
+      })
+ 
+      return res.render("home", { veg, non_veg} );
     },
     menu: async (req, res) => {
       const foods = await Menu.find().sort({availibility: -1});
