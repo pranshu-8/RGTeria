@@ -399,7 +399,7 @@
     "_id": {
       "$oid": "5eee651f739f8c674fd734ef"
     },
-    "name": "Veg Momos",
+    "name": "Veg Momos (5pc)",
     "image": "veg_momos.jpg",
     "availibility":true,
     "price": 30,
@@ -409,8 +409,8 @@
     "_id": {
       "$oid": "5eee651f739f8c674fd735ef"
     },
-    "name": "Paneer Momos",
-    "image": "Paneer_momos.jpg",
+    "name": "Fry Veg Momos (5pc)",
+    "image": "fry_veg_momos.jpg",
     "availibility":true,
     "price": 40,
     "count": 0
@@ -419,10 +419,40 @@
     "_id": {
       "$oid": "5eee651f739f8c674fd736ef"
     },
-    "name": "Chicken Momos",
+    "name": "Paneer Momos (5pc)",
+    "image": "Paneer_momos.jpg",
+    "availibility":true,
+    "price": 40,
+    "count": 0
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd737ef"
+    },
+    "name": "Fry Paneer Momos (5pc)",
+    "image": "fry_Paneer_momos.jpg",
+    "availibility":true,
+    "price": 50,
+    "count": 0
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd738ef"
+    },
+    "name": "Chicken Momos (5pc)",
     "image": "chicken_momos.jpg",
     "availibility":true,
     "price": 50,
+    "count": 0
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd739ef"
+    },
+    "name": "Fry Chicken Momos (5pc)",
+    "image": "fry_chicken_momos.jpg",
+    "availibility":true,
+    "price": 60,
     "count": 0
   }
 

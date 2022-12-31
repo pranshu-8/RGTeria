@@ -20,7 +20,17 @@ const homeController = () => {
       let veg=[];
       let non_veg=[];
       food.forEach(function(foodies) {
-        if(foodies.id[foodies.id.length-1]==='d' || foodies.id[foodies.id.length-1]==='e') {
+        const match= ()=>{
+          let ct=0;
+          let s1='5eee651f739f8c674fd738ef'
+          let s2='5eee651f739f8c674fd739ef'
+          while(ct!=foodies.id.length){
+            if(foodies.id[ct]!=s1[ct] && foodies.id[ct]!=s2[ct]) return false;
+            ct++;
+          }
+          return true;
+        }
+        if(foodies.id[foodies.id.length-1]==='d' || foodies.id[foodies.id.length-1]==='e' || match()) {
             non_veg.push(foodies)
         }
         else{
