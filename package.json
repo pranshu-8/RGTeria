@@ -1,0 +1,52 @@
+{
+  "name": "rgipt-food-cafeteria-app",
+  "version": "1.0.0",
+  "description": "This is a.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "production": "mix --production"
+  },
+  "author": "Kuldeep Singh",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@stripe/stripe-js": "^1.44.1",
+    "axios": "^0.21.4",
+    "bcrypt": "^5.1.0",
+    "connect-mongo": "^3.2.0",
+    "dotenv": "^8.6.0",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.17.3",
+    "fs": "^0.0.1-security",
+    "moment": "^2.29.4",
+    "mongoose": "^5.13.15",
+    "nodemailer": "^6.8.0",
+    "noty": "^3.2.0-beta",
+    "passport": "^0.6.0",
+    "passport-google": "^0.1.0",
+    "passport-google-oauth2": "^0.2.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "paytmchecksum": "^1.5.0",
+    "resolve-url-loader": "^5.0.0",
+    "socket.io": "^4.5.4",
+    "stripe": "^8.222.0",
+    "tailwindcss": "^2.2.19"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "laravel-mix": "^6.0.49",
+    "nodemon": "^2.0.20",
+    "sass": "^1.56.1",
+    "sass-loader": "^10.4.1",
+    "vue-template-compiler": "^2.7.14"
+  }
+}

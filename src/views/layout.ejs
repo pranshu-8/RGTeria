@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RGTeria</title>
+  <link rel="stylesheet" href="/css/app.css" />
+  <!-- // <link rel="shortcut icon" href="/img/logo.jpg" type="image/x-icon"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <!--========== BOX ICONS ==========-->
+  <link rel="stylesheet"
+    href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- <div id="loading"></div> -->
+  <!--========== SCROLL TOP ==========-->
+  <a href="#" class="scrolltop" id="scroll-top">
+    <i class="bx bx-chevron-up scrolltop__icon"></i>
+  </a>
+
+  <!--========== HEADER ==========-->
+  <header class="l-header" id="header">
+    <nav class="nav bd-container">
+      <% let temp= user?.role ;
+      if(user?.role==="admin") {temp='/admin/orders';}
+      else temp='/';
+      %>
+      <a  class="nav__logo" href= <%= temp %> ><img width="110px" src="/img/logo.png" alt="logo.png" /></a>
+
+      <div class="nav__menu " id="nav-menu">
+        <ul class="nav__list">
+            <% if(user?.role!="admin" ) { %>
+          <li class="nav__item">
+            <a href="/" class="hover:text-green-800 nav__link active-link">Home🏠</a>
+          </li>
+          <li class="nav__item">
+            <a href="/menu" class="hover:text-green-800 nav__link active-link">Menu🍔</a>
+          </li>
+          <% } %>
+
+          <% if(user) { %>
+            <% if(user.role==="customer" ) { %>
+            <li class="nav__item">
+              <a href="/customer/orders" class="hover:text-green-800 nav__link active-link">Orders🤤</a>
+            </li>
+            
+            <% } 
+            else { %>
+              <li class="nav__item">
+                <a href="/admin/newitem" class="hover:text-green-700 nav__link active-link">Special Controls🗿</a>
+              </li>
+              <li class="nav__item">
+                <a href="/admin/orders" class="hover:text-green-700 nav__link active-link">Orders👨‍🍳</a>
+              </li>
+              <li class="nav__item">
+                <a href="/admin/available" class="hover:text-green-700 nav__link active-link">Control Menu 👨‍🔧</a>
+              </li>
+               <% } %>
+                <li class="nav__item">
+                  <form id="logout" action="/logout" method="POST">
+                    <a class="hover:text-green-800 nav__link active-link" onclick="document.getElementById('logout').submit()"
+                      href="#">Logout👀</a>
+                  </form>
+
+                </li>
+                <li  class="nav__item" ><img  width="22px" src="/img/customer.png" alt="customer.png" /></li>
+                <% } else { %>
+                    <li class="nav__item">
+                      <a class="hover:text-green-800 nav__link active-link" href="/login">Login🤗</a>
+                    </li>
+                    <% } %>
+                    <% if(user?.role!="admin" ) { %>
+                      <li class="nav__cart nav__item">
+                        <a href="/cart" class="shopping__cart nav__link active-link rounded-full flex items-center">
+                          <span id="cartCounter" class="font-bold">
+                            <%= session.cart ? session.cart.totalQty : '' %>
+                          </span>
+                          <img class="nav__link active-link" src="/img/cart1.png" alt="cart.png" />
+                        </a>
+                      </li>
+                      <% } %>
+                      <li ><i class="bx bx-moon change-theme" id="theme-button"></i></li>
+        </ul>
+      </div>
+
+      <div class="nav__toggle" id="nav-toggle">
+        <i class="bx bx-menu"></i>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========== HEADER ==========
+
+    <nav class="container px-8 mx-auto flex items-center justify-between py-4">
+      <div class="">
+        <a href="/"><img src="/img/logo.png" alt="logo.png" /></a>
+      </div>
+      <div class="">
+        <ul class="flex items-center">
+          <li class="ml-6"><a href="/">Home</a></li>
+          <li class="ml-6"><a href="/offers">Offers</a></li>
+          <% if(user) { %>
+          <li class="ml-6">
+            <form id="logout" action="/logout" method="POST">
+              <a onclick="document.getElementById('logout').submit()" href="#"
+                >Logout</a
+              >
+            </form>
+          </li>
+          <% } else { %>
+          <li class="ml-6"><a href="/register">Register</a></li>
+          <li class="ml-6"><a href="/login">Login</a></li>
+          <% } %>
+
+          <li class="ml-6">
+            <a
+              href="/cart"
+              class="inline-block px-4 py-2 rounded-full flex items-center"
+            >
+              <span id="cartCounter" class="text-white font-bold pr-2"
+                ><%= session.cart ? session.cart.totalQty : '' %></span
+              >
+              <img src="/img/cart.png" alt="cart.png" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav> -->
+
+  <main class="l-main"></main>
+  <!--========== HOME ==========-->
+  <%- body %>
+    </main>
+
+    <!--========== FOOTER ==========-->
+    <footer class="footer section bd-container">
+      <div class="footer__container bd-grid">
+        <div class="footer__content">
+          <a href="#" class="footer__logo">RGIPT Cafeteria Food</a>
+          <span class="footer__description">Jaiswal Caterers</span>
+          <!-- <h3 class="footer__title">Services</h3>
+          <ul>
+            <li><a href="#" class="footer__link">Food Booking</a></li>
+            <li><a href="#" class="footer__link">Dine-In</a></li>
+            <li><a href="#" class="footer__link">Take Away</a></li>
+          </ul> -->
+        </div>
+        <div class="footer__content">
+          <a href="https://github.com/pranshu-8" target="_blank" class="footer__social"><i class="bx bxl-github"></i></a>
+          <a href="https://www.linkedin.com/in/pranshu-tewari-053757200/" target="_blank" class="footer__social"><i
+              class="bx bxl-linkedin"></i></a>
+          <a href="https://twitter.com/Pranshu29993102" target="_blank" class="footer__social"><i class="bx bxl-twitter"></i></a>
+          <h3 class="footer__title mt-6">Information</h3>
+          <ul>
+            <li><a href="#" class="footer__link">Event</a></li>
+            <li><a href="#" class="footer__link">Contact us</a></li>
+            <li><a href="#" class="footer__link">Privacy policy</a></li>
+            <li><a href="#" class="footer__link">Terms of services</a></li>
+          </ul>
+        </div>
+        <!-- <div class="footer__content">
+          <h3 class="footer__title">Information</h3>
+          <ul>
+            <li><a href="#" class="footer__link">Event</a></li>
+            <li><a href="#" class="footer__link">Contact us</a></li>
+            <li><a href="#" class="footer__link">Privacy policy</a></li>
+            <li><a href="#" class="footer__link">Terms of services</a></li>
+          </ul> -->
+
+        <div class="footer__content">
+          <h3 class="footer__title">Secured by OWASP RGIPT</h3>
+         <a href="https://owasp.org/www-chapter-rajiv-gandhi-institute-of-petroleum-technology/" target="_blank" rel="noopener noreferrer"><img  style="border-radius: 14%;" width="200px" src="/img/owasp.jpg" alt="owasp.jpg" /></a> 
+
+        </div>
+      </div>
+
+      <p class="footer__copy">&#169; <script>document.write(new Date().getFullYear())</script> RGTeria Services. All rights reserved.</p>
+    </footer>
+
+    <!--========== MAIN JS ==========-->
+    <script>
+      document.onreadystatechange = function() { 
+        setTimeout(() => {
+          if (document.readyState !== "complete") { 
+              document.querySelector( 
+                "body").style.visibility = "hidden"; 
+              document.querySelector( 
+                "#loading").style.visibility = "visible"; 
+          } else { 
+              document.querySelector( 
+                "#loading").style.display = "none"; 
+              document.querySelector( 
+                "body").style.visibility = "visible"; 
+          }
+        }, 1000);
+           
+      }; 
+      function toggleModal(modalID) {
+        event.preventDefault();
+        document.getElementById(modalID).classList.toggle("hidden");
+        document
+          .getElementById(modalID + "-backdrop")
+          .classList.toggle("hidden");
+        document.getElementById(modalID).classList.toggle("flex");
+        document.getElementById(modalID + "-backdrop").classList.toggle("flex");
+      }
+    </script>
+    <script defer src="/socket.io/socket.io.js"></script>
+    <script defer src="/js/app.js"></script>
+ 
+    <!--========== SCROLL REVEAL ==========-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+</body>
+
+</html>

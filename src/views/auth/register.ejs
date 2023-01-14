@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <link
+    href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+    rel="stylesheet"
+  />
+  <body>
+    <section
+      class="login flex text-green-700 items-center justify-center pt-24"
+    >
+      <div class="max-w-xs md:max-w-max">
+        <form
+          action="/register"
+          method="POST"
+          enctype="multipart/form-data"
+          class="shadow-lg bg-white dark:bg-gray-800 rounded px-8 pt-6 pb-8 mb-4"
+        >
+          <% if(messages.error) { %>
+          <span class="text-red-500 text-sm"><%= messages.error%></span>
+          <% }%>
+          <div class="md:flex">
+            <div class="flex-1 md:mr-4 md:pr-4 md:border-r">
+              <div class="mb-4">
+                <label class="block text-sm font-bold mb-2" for="username">
+                  Email
+                </label>
+                <input
+                  name="email"
+                  value="<%=messages.email%>"
+                  class="text-gray-900 dark:text-white shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  id="username"
+                  type="email"
+                  placeholder="Enter your email"
+                />
+            </div>
+              <div class="mb-4">
+                <label class="block text-sm font-bold mb-2" for="password">
+                  Password
+                </label>
+                <input
+                  name="password"
+                  class="text-gray-900 dark:text-white shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  id="password"
+                  required
+                  type="password"
+                  placeholder="******************"
+                />
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-bold mb-2" for="password">
+                  Confirm Password
+                </label>
+                <input
+                  name="confirmpassword"
+                  class="text-gray-900 dark:text-white shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  id="password"
+                  type="password"
+                  placeholder="******************"
+                />
+
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between md:justify-around mt-4">
+            <button
+              class="btn-primary rounded-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="submit"
+            >
+              Register
+            </button>
+            <a
+              class="inline-block align-baseline font-bold text-sm"
+              href="/login"
+            >
+              Already have account?
+            </a>
+          </div>
+        </form>
+        <p class="text-center text-gray-500 text-xs">
+          &copy;2021 Alpa-Dev. All rights reserved.
+        </p>
+      </div>
+    </section>
+  </body>
+</html>

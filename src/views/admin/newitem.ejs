@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+
+<body>
+  <section class="login flex text-green-700 items-center justify-center pt-24">
+    <% 
+    var temp
+    if(states!=null){
+    temp=states
+    }
+    %>
+
+    <div style="width: 500px;">
+      <form action="/admin/newitem" method="POST" enctype="multipart/form-data"
+        class="shadow-lg  dark:bg-gray-800 rounded px-8 pt-6 pb-8 mb-4">
+        <% if(messages.error) { %>
+          <span class="text-red-500 text-sm">
+            <%= messages.error%>
+          </span>
+          <% }%>
+            <div class="md:flex">
+              <div class="flex-1 md:mr-4 md:pr-4 md:border-r">
+                <div class="mb-4">
+                  <label class="block text-sm font-bold mb-2" for="names">
+                    Name of the item
+                  </label>
+                  <input name="names"
+                    class="text-gray-900 dark:text-white shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+                    id="username" type="text" placeholder="Enter name" required />
+                </div>
+                <div class="mb-4">
+                  <label class="block text-sm font-bold mb-2" for="fare">
+                    Price of the Item
+                  </label>
+                  <input name="fare"
+                    class="text-gray-900 dark:text-white shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="username" type="number" placeholder="Enter the price" required />
+                </div>
+                <div class="mb-4">
+                  <label class="block text-sm font-bold mb-2" for="img">
+                    Enter the name of image file
+                  </label>
+                  <input name="img"
+                    class="text-gray-900 dark:text-white shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+                    id="username" type="text" placeholder="Enter the file name" required />
+                </div>
+                <div class="flex items-center justify-between md:justify-around mt-4">
+                  <button
+                    class="btn-primary rounded-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    type="submit" onclick="return confirm('Are you sure you want to add this item?');">
+                    Add the item
+                  </button>
+
+                </div>
+              </div>
+
+      </form>
+      <!-- <p class="text-center text-gray-500 text-xs">
+          &copy;2021 Alpa-Dev. All rights reserved.
+        </p> -->
+    </div>
+    <form action="/admin/change" method="POST" >
+      <div class="flex items-center justify-between md:justify-around mt-2">
+
+        <div class="mt-2">
+          <button
+            class="focus:outline-none  px-6 py-2 rounded-full text-white font-bold mt-6 btn-primary padding-center"
+         name="changes" value="reset" type="submit"
+            onclick="return confirm('Are you sure you want to reset stats?');">
+            Reset order count
+          </button>
+        </div>
+
+      </div>
+
+      <div class="flex items-center justify-between md:justify-around mt-2">
+
+        <div class="mt-2">
+          <button
+            class="focus:outline-none  px-6 py-2 rounded-full text-white font-bold mt-6 btn-primary padding-center"  name="changes"
+             value="resume" type="submit" id="resumebtn">
+            Resume Booking
+          </button>
+        </div>
+      </div>
+      <div class="flex items-center justify-between md:justify-around mt-2>
+
+      <div class=" mt-2">
+        <button class="focus:outline-none  px-6 py-2 rounded-full text-white font-bold mt-6 btn-primary padding-center"
+        name="changes" value="stop"  id="stopbtn"  type="submit" >
+          Stop Booking
+        </button>
+      </div>
+      <!-- <p >Current State: <%= states  %></p> -->
+      </div>
+    </form>
+   
+  </section>
+</body>
+
+</html>
