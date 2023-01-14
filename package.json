@@ -4,7 +4,7 @@
   "description": "This is a.",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development ./node_modules/.bin/netlify-lambda serve src",
+    "start": "nodemon server.js",
     "development": "mix",
     "watch": "mix watch",
     "watch-poll": "mix watch -- --watch-options-poll=1000",
@@ -28,7 +28,6 @@
     "fs": "^0.0.1-security",
     "moment": "^2.29.4",
     "mongoose": "^5.13.15",
-    "netlify-lambda": "^2.0.15",
     "nodemailer": "^6.8.0",
     "noty": "^3.2.0-beta",
     "passport": "^0.6.0",
