@@ -1,4 +1,4 @@
-const { json } = require("express");
+ const { json } = require("express");
 const mongoose= require("mongoose")
 const User = require("../../../models/user");
 const Menu=  require("../../../models/menu");
@@ -66,9 +66,17 @@ const cartController = () => {
       delete req.session.cart;
       return res.redirect("/menu");
       },
-      rank : async(req,res) =>{
+     rank : async(req,res) =>{
         const foods = await Menu.find().sort({count: -1}).sort({price: -1});
-        return res.render("customers/rank", { foods: foods });
+        var arr=[]
+        arr.push(['Food Item Name', 'Count'])
+        let totalOrders=0
+        
+        foods.forEach(element => {
+            arr.push([element.name,element.count])
+            totalOrders+=element.count
+          });
+        return res.render("customers/rank", { foods: arr,totalOrders});
       },
   };
 };
