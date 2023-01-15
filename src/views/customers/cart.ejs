@@ -109,7 +109,7 @@
 
                             <% } %>
                               <form action="/clear" method="GET">
-                                <div class="mt-8">
+                                <div class="mt-4">
                                   <div id="card-element" class="w-11/12 m-auto border-gray-400"></div>
                                   <button
                                     class="focus:outline-none btn-primary px-6 py-2 rounded-full text-white font-bold mt-6"
@@ -157,7 +157,7 @@
     script.crossOrigin = `anonymous`;
     script.onload = () => {
       // console.log(session.cart.totalPrice)
-
+  var msg='Payment Successfull';
       var config = {
         "root": "",
         "flow": "DEFAULT",
@@ -202,12 +202,20 @@
                   },
                   body: JSON.stringify({ order: data.order })
                 })
+
                 resp.json().then((data) => {
+                  
                   //order is generated successfully
                   if (data.redirects === true) {
                     window.location.href = "/customer/orders";
                   }
-                  
+                  else{
+
+ 
+
+
+
+                  }
                 }).catch(error => {
                   console.log(error)
                   alert("error in initiating payment")
@@ -223,14 +231,52 @@
 
 
             } else if (data.STATUS === 'TXN_FAILURE') {
-              alert("Payment failure. Please book again.")
-
+              msg='Payment failed. Please reorder.'
+             
             } else {
               alert("Something wend wrong while payment contact to admin!!")
             }
 
 
+            (async () => {
+    // create and show the notification
+    const showNotification = () => {
+        // create a new notification
+        const notification = new Notification('RGTeria Payment Status', {
+            body: msg,
+            icon: "../../../public/img/logo.png"
+        });
 
+        // close the notification after 10 seconds
+        setTimeout(() => {
+          alert("Payment failed. Please reorder.")
+            notification.close();
+        }, 10 * 1000);
+
+        // navigate to a URL when clicked
+    }
+
+    // show an error message
+    const showError = () => {
+        const error = document.querySelector('.error');
+        error.style.display = 'block';
+        error.textContent = 'You blocked the notifications';
+    }
+
+    // check notification permission
+    let granted = false;
+
+    if (Notification.permission === 'granted') {
+        granted = true;
+    } else if (Notification.permission !== 'denied') {
+        let permission = await Notification.requestPermission();
+        granted = permission === 'granted' ? true : false;
+    }
+
+    // show notification or error
+    granted ? showNotification() : showError();
+
+})();
 
           }
 
