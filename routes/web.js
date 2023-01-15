@@ -7,12 +7,15 @@ const statusController = require("../app/http/controllers/admin/statusController
 const availableController = require("../app/http/controllers/admin/availableControl");
 const newitemController = require("../app/http/controllers/admin/newitemController");
 const redirectController = require("../app/http/controllers/admin/redirectController");
+const paytmController = require("../app/http/controllers/customers/paytmController");
 const passport = require("passport");
 // middlewares
 const check = require("../app/http/middleware/check");
 const guest = require("../app/http/middleware/guest");
 const auth = require("../app/http/middleware/auth");
 const admin = require("../app/http/middleware/admin");
+const https = require('https');
+const PaytmChecksum = require('paytmchecksum');
 require("../../RGTeria/app/config/passport.js")
 
 const initRoutes = (app) => {
@@ -40,7 +43,7 @@ const initRoutes = (app) => {
   app.post("/orders", auth, orderController().store);
   app.get("/customer/orders", auth, check, orderController().index);
   app.get("/customer/orders/:id", auth, orderController().show);
-
+  app.get("/customer/paytmToken", auth, paytmController().index);
   // Admin routes
   app.get("/admin/orders", admin, adminOrderController().index);
   app.post("/admin/order/status", admin, statusController().update);
