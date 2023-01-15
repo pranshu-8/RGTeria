@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/>
-  </head>
-  <link
-    href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
-    rel="stylesheet"
-  />
-  <body>
-    <section class="section bd-container dark-theme">
-      <% if(session.cart) { %>
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- <meta http-equiv="refresh" content="8"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
+</head>
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+
+<body>
+  <section class="section bd-container dark-theme">
+
+    <% if(session.cart) { %>
       <div class="order container mx-auto">
         <div class="flex items-center border-b border-gray-300 pb-4">
           <img src="/img/cart-black.png" alt="cart" />
@@ -20,27 +20,28 @@
         </div>
         <div class="main flex flex-col md:flex-row px-2">
           <div class="left w-full md:w-8/12 md:h-screen md:pr-12">
-            <div
-              class="items-list h-96 md:h-3/4 pr-4 overflow-auto md:overflow-none"
-            >
+            <div class="items-list h-96 md:h-3/4 pr-4 overflow-auto md:overflow-none">
+
               <% for(let food of Object.values(session.cart.items)) { %>
-              <div class="flex justify-between items-center my-8">
-                <img
-                  class="w-24 rounded"
-                  src="/img/<%= food.item.image%>"
-                  alt=""
-                />
-                <div class="flex-1 ml-4">
-                  <h1 class="font-bold"><%= food.item.name%></h1>
-                  <span><%= food.item.size%></span>
-                  <p class="flex-1 font-semibold ">
-                    Pcs <%= food.qty%>
-                  </p>
-                </div>
-                <span class="hidden md:inline flex-1">Pcs <%= food.qty%></span>
-                <span class="font-bold text-lg">₹ <%= food.item.price%></span>
-              </div>
-              <% } %>
+                <% var test=session.cart.totalPrice %>
+                <% var mid=process.env.MID %>
+                  <div class="flex justify-between items-center my-8">
+                    <img class="w-24 rounded" src="/img/<%= food.item.image%>" alt="" />
+                    <div class="flex-1 ml-4">
+                      <h1 class="font-bold">
+                        <%= food.item.name%>
+                      </h1>
+                      <span>
+                        <%= food.item.size%>
+                      </span>
+                      <p class="flex-1 font-semibold ">
+                        Pcs <%= food.qty%>
+                      </p>
+                    </div>
+                    <span class="hidden md:inline flex-1">Pcs <%= food.qty%></span>
+                    <span class="font-bold text-lg">₹ <%= food.item.price%></span>
+                  </div>
+                  <% } %>
             </div>
             <hr />
           </div>
@@ -48,29 +49,25 @@
             <div class="text-center relative md:static py-4">
               <div class="">
                 <span class="text-lg font-bold">Total Amount:</span>
-                <span
-                  class="amount text-2xl font-bold ml-4 text-green-400 md:text-3xl"
-                  >₹ <%= session.cart.totalPrice%></span>
+                <span class="amount text-2xl font-bold ml-4 text-green-400 md:text-3xl">₹ <%= session.cart.totalPrice%>
+                </span>
               </div>
               <% if(user) { %>
-              <div class="text-green-700 text-center">
-                <form
-                  class="mt-12"
-                  id="payment-form"
-                >
+                <div class="text-green-700 text-center">
+
                   <% if(messages.error) { %>
-                  <span class="text-red-500 text-sm"
-                    ><%= messages.error %></span
-                  >
-                  <% } %>
-                  <div class="relative m-auto w-11/12 mb-4">
+                    <span class="text-red-500 text-sm">
+                      <%= messages.error %>
+                    </span>
+                    <% } %>
+                      <!-- <div class="relative m-auto w-11/12 mb-4">
                     <div
                       id="paymentType"
                       name="paymentType"
               
                     ></div>
-                  </div>
-                  <!-- <input
+                  </div> -->
+                      <!-- <input
                     name="phone"
                     class="border border-gray-400 p-2 w-11/12 mb-4 rounded-md"
                     type="tel"
@@ -84,88 +81,211 @@
                     placeholder="Address"
                     required
                   /> -->
-                  <% if(user.book!=false && statuss!=false){ %>
-                  <div class="mt-4">
-                    <div
-                      id="card-element"
-                      class="w-11/12 m-auto border-gray-400"
-                    ></div>
-                    <button
-                      class="focus:outline-none btn-primary px-6 py-2 rounded-full text-white font-bold mt-6"
-                      type="submit"
-                    >
-                      Order Now
-                    </button>
-                  </div>
-                  <% } 
-                  else if(statuss===false){ 
-                    %>
-                    <div
-                    id="card-element"
-                    class="w-11/12 m-auto text-red-800 font-bold border-gray-400 px-6 py-2 rounded-full focus:outline-none border bg-gray-200"
-                  > <p>One or more item in the cart is unavailable.</p>
-                  <p>Please  clear cart and go back to menu.</p>
-                  <p>To check the latest availibility.</p>
-                </div>
+                      <% if(user.book!=false && statuss!=false){ %>
+                        <div class="mt-4">
+                          <div id="card-element" class="w-11/12 m-auto border-gray-400"></div>
+                          <button
+                            class="focus:outline-none btn-primary px-6 py-2 rounded-full text-white font-bold mt-6"
+                            onclick="startPayment()">
+                            <span id="pay-st"> Order Now </span>
+                          </button>
+                        </div>
+                        <% } else if(statuss===false){ %>
+                          <div id="card-element"
+                            class="w-11/12 m-auto text-red-800 font-bold border-gray-400 px-6 py-2 rounded-full focus:outline-none border bg-gray-200">
+                            <p>One or more item in the cart is unavailable.</p>
+                            <p>Please clear cart and go back to menu.</p>
+                            <p>To check the latest availibility.</p>
+                          </div>
 
 
-                  <%  } else { %>
-                    <div
-                    id="card-element"
-                    class="w-11/12 m-auto text-red-800 font-bold border-gray-400 px-6 py-2 rounded-full focus:outline-none border bg-gray-200"
-                  > <p> Bookings Closed. 😔</p>
-                  <p>We will be back shortly.</p>
-                  <p> Sorry for the inconvenience.</p>
-                </div>
+                          <% } else { %>
+                            <div id="card-element"
+                              class="w-11/12 m-auto text-red-800 font-bold border-gray-400 px-6 py-2 rounded-full focus:outline-none border bg-gray-200">
+                              <p> Bookings Closed. 😔</p>
+                              <p>We will be back shortly.</p>
+                              <p> Sorry for the inconvenience.</p>
+                            </div>
 
-                    <% } %>
-                </form>
-                <div class="mt-8">
-                  <div
-                    id="card-element"
-                    class="w-11/12 m-auto border-gray-400"
-                  ></div>
-                  <a
-                    class="focus:outline-none btn-primary px-6 py-2 rounded-full text-white font-bold mt-6"
-                    href="/clear"
-                  >
-                    Clear Cart
-                </a>
+                            <% } %>
+                              <form action="/clear" method="GET">
+                                <div class="mt-8">
+                                  <div id="card-element" class="w-11/12 m-auto border-gray-400"></div>
+                                  <button
+                                    class="focus:outline-none btn-primary px-6 py-2 rounded-full text-white font-bold mt-6"
+                                    type="submit">
+                                    Clear Cart
+                                  </button>
+                                </div>
+                              </form>
                 </div>
-              </div>
-              <% } else { %>
-              <a
-                href="/login"
-                class="inline-block cursor-pointer btn-primary px-6 py-2 text-white rounded-full font-bold mt-6"
-                >Login to continue
-              </a>
-              <% } %>
+                <% } else { %>
+                  <a href="/login"
+                    class="inline-block cursor-pointer btn-primary px-6 py-2 text-white rounded-full font-bold mt-6">Login
+                    to continue
+                  </a>
+                  <% } %>
             </div>
           </div>
         </div>
       </div>
       <% } else { %>
-      <div class="empty-cart py-16 my-4">
-        <div class="container mx-auto text-center">
-          <h1 class="text-3xl font-bold mb-2">Cart Empty 😕</h1>
-          <p class="text-gray-500 text-sm md:text-lg mb-12">
-            You probably haven't ordered anything yet. <br />
-            To order the stuff, go to the main page.
-          </p>
-          <img
-            class="w-1/2 md:w-1/5 mx-auto"
-            src="/img/empty-cart.png"
-            alt="empty-cart"
-          />
-          <a
-            href="/"
-            class="inline-block px-6 py-2 rounded-full btn-primary text-white font-bold mt-12"
-            >Go back</a
-          >
+        <div class="empty-cart py-16 my-4">
+          <div class="container mx-auto text-center">
+            <h1 class="text-3xl font-bold mb-2">Cart Empty 😕</h1>
+            <p class="text-gray-500 text-sm md:text-lg mb-12">
+              You probably haven't ordered anything yet. <br />
+              To order the stuff, go to the main page.
+            </p>
+            <img class="w-1/2 md:w-1/5 mx-auto" src="/img/empty-cart.png" alt="empty-cart" />
+            <a href="/" class="inline-block px-6 py-2 rounded-full btn-primary text-white font-bold mt-12">Go back</a>
+          </div>
         </div>
-      </div>
-      <% } %>
-    </section>
-    
-  </body>
+        <% } %>
+  </section>
+
+</body>
+<script>
+    var mid = "<%= mid  %>";
+  const baseUrl = "http://localhost:5000"
+  function initiateClientModule(data) {
+    var amount = "<%= test  %>";
+
+    var order = data.order
+    const script = document.createElement("script");
+    script.src = ` https://securegw-stage.paytm.in/merchantpgpui/checkoutjs/merchants/${mid}.js`;
+    script.crossOrigin = `anonymous`;
+    script.onload = () => {
+      // console.log(session.cart.totalPrice)
+
+      var config = {
+        "root": "",
+        "flow": "DEFAULT",
+        "data": {
+          "orderId": data.order._id, /* update order id */
+          "token": data.get_res.body.txnToken, /* update token value */
+          "tokenType": "TXN_TOKEN",
+          "amount": amount /* update amount */
+        },
+
+        "merchant": {
+
+          mid: mid,
+          redirect: false
+        },
+
+        "handler": {
+          "notifyMerchant": function (eventName, data) {
+            console.log("notifyMerchant handler function called");
+            console.log("eventName => ", eventName);
+            console.log("data => ", data);
+          },
+          "transactionStatus": async function (data) {
+            console.log("transaction completed")
+            console.log(data)
+            window.Paytm.CheckoutJS.close();
+            if (data.STATUS === "TXN_SUCCESS") {
+
+              const response = await fetch(`http://localhost:5000/customer/transaction`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ order, data })
+              })
+              response.json().then(async (data) => {
+                //order is generated successfully
+                const resp = await fetch(`http://localhost:5000/orders`, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({ order: data.order })
+                })
+                resp.json().then((data) => {
+                  //order is generated successfully
+                  if (data.redirects === true) {
+                    window.location.href = "/customer/orders";
+                  }
+                  
+                }).catch(error => {
+                  console.log(error)
+                  alert("error in initiating payment")
+                })
+              }
+
+
+              ).catch(error => {
+                console.log(error)
+                alert("error in initiating payment")
+              })
+
+
+
+            } else if (data.STATUS === 'TXN_FAILURE') {
+              alert("Payment failure. Please book again.")
+
+            } else {
+              alert("Something wend wrong while payment contact to admin!!")
+            }
+
+
+
+
+          }
+
+
+        }
+      };
+
+
+      if (window.Paytm && window.Paytm.CheckoutJS) {
+        window.Paytm.CheckoutJS.onLoad(function excecuteAfterCompleteLoad() {
+          // initialze configuration using init method
+          window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
+            // after successfully updating configuration, invoke JS Checkout
+            window.Paytm.CheckoutJS.invoke();
+            document.getElementById('pay-st').innerHTML = "Order Now"
+          }).catch(function onError(error) {
+            console.log("error => ", error);
+          });
+        });
+      }
+
+    }
+
+    document.body.appendChild(script);
+
+
+  }
+
+  //start payment function
+  async function startPayment() {
+    //call api to start payment
+    const loader = document.getElementById('pay-st')
+    loader.innerHTML = "Paytm Checkout Loading..."
+
+    const response = await fetch(`${baseUrl}/customer/paytmToken`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+
+
+    response.json().then(data => {
+      //order is generated successfully
+      console.log(data)
+      if(data.get_res.body.resultInfo.resultStatus==="S") initiateClientModule(data)
+      else alert("error in initiating payment")
+
+    }).catch(error => {
+      console.log(error)
+      alert("error in initiating payment")
+    })
+
+
+  }
+</script>
+
 </html>

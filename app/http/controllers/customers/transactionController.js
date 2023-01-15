@@ -1,17 +1,18 @@
 const https = require('https');
 const PaytmChecksum = require('paytmchecksum');
+const axios= require("axios")
 function transactionController() {
     return {
       async index(req, res) {
-const {neworder}= req.body
-const order= neworder
+const {order}= req.body
 /* initialize an object */
-var getAllresponse = JSON.parse(JSON.stringify(req.body));
+var getAllresponse = JSON.parse(JSON.stringify(req.body.data));
+console.log(getAllresponse)
+
       var paymentChecksumres = getAllresponse.CHECKSUMHASH
-      var isVerifyChecksumhash = PaytmChecksum.verifySignature(getAllresponse, process.env.MERCHANT_KEY, paymentChecksumres);
-      if(isVerifyChecksumhash){
-        const order=getAllresponse.newOrder 
-        const mid=getAllresponse.mid
+      console.log(paymentChecksumres)
+      // var isVerifyChecksumhash = PaytmChecksum.verifySignature(JSON.stringify(getAllresponse), process.env.MERCHANT_KEY, paymentChecksumres);
+      // if(isVerifyChecksumhash){
         /* initialize an object */
         var paytmParams = {};
 
@@ -19,7 +20,7 @@ var getAllresponse = JSON.parse(JSON.stringify(req.body));
         paytmParams.body = {
 
           /* Find your MID in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys */
-          "mid": mid,
+          "mid": process.env.MID,
 
           /* Enter your order id which needs to be check status for */
           "orderId": order._id
@@ -65,12 +66,14 @@ var getAllresponse = JSON.parse(JSON.stringify(req.body));
             });
 
             post_res.on('end', function () {
-              console.log('Response: ', response);
               var res_obj= JSON.parse(response)
+              console.log('Response: ', res_obj);
+      
 
               var isVerifySignature=PaytmChecksum.verifySignature(JSON.stringify(res_obj.body),process.env.MERCHANT_KEY,res_obj.head.signature)
               if(isVerifySignature){
-             return res.status.json({res_obj,order})
+            
+              return res.json({order,res_obj})
               }
               else{
                 console.log("Signature mismatched")
@@ -82,12 +85,14 @@ var getAllresponse = JSON.parse(JSON.stringify(req.body));
           post_req.write(post_data);
           post_req.end();
 
-        });
-      }else
-      {
-      console.log("mismatched signature")
-      }      
+        }); 
+      // else
+      // {
+      // console.log("mismatched signature")
+      // }      
 
 
-}}}
+
+}
+}}
 module.exports=transactionController

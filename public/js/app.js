@@ -2659,7 +2659,7 @@ function initAdmin(socket) {
                                     case 2:
                                         stripe = _context2.sent;
                                         card = null;
-                                        paymentType = document.querySelector("#paymentType");
+                                        paymentType = document.querySelector("#paymentTypghce");
 
                                         if (paymentType) {
                                             _context2.next = 7;
@@ -2671,7 +2671,7 @@ function initAdmin(socket) {
                                     case 7:
 
 
-                                        paymentForm = document.querySelector("#payment-form");
+                                        paymentForm = document.querySelector("#payment-formhfhgf");
 
                                         if (paymentForm) {
                                             paymentForm.addEventListener("submit", /*#__PURE__*/function () {

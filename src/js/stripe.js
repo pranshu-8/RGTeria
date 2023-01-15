@@ -2,9 +2,9 @@ const placeOrder= require("./apiService");
 const https = require('https');
 const PaytmChecksum = require('paytmchecksum');
 const  axios = require("axios");
-async function initStripe() {
+(async function initStripe() {
   let card = null;
-
+ document.appendChild(alert("Hi"));
   const paymentType = document.querySelector("#paymentType");
   if (!paymentType) {
     return;
@@ -73,6 +73,5 @@ function initiateClient(order,get_res,mid,key,bill){
   }
   document.body.appendChild(script)
 }
-}
-module.exports= initStripe
+})();
 

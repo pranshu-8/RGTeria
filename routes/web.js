@@ -15,8 +15,7 @@ const check = require("../app/http/middleware/check");
 const guest = require("../app/http/middleware/guest");
 const auth = require("../app/http/middleware/auth");
 const admin = require("../app/http/middleware/admin");
-const https = require('https');
-const PaytmChecksum = require('paytmchecksum');
+const paypage = require("../app/http/middleware/paypage");
 require("../../RGTeria/app/config/passport.js")
 
 const initRoutes = (app) => {
@@ -42,10 +41,11 @@ const initRoutes = (app) => {
   app.get("/rank",cartController().rank)
   // customer/order routes
   app.post("/orders", auth, orderController().store);
-  app.post("/transaction", auth, transactionController().index);
+
   app.get("/customer/orders", auth, check, orderController().index);
   app.get("/customer/orders/:id", auth, orderController().show);
-  app.get("/customer/paytmToken", auth, paytmController().index);
+  app.post("/customer/paytmToken", auth,paypage ,paytmController().index);
+  app.post("/customer/transaction",auth,transactionController().index);
   // Admin routes
   app.get("/admin/orders", admin, adminOrderController().index);
   app.post("/admin/order/status", admin, statusController().update);
