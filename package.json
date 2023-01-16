@@ -2,9 +2,10 @@
   "name": "rgipt-food-cafeteria-app",
   "version": "1.0.0",
   "description": "This is a food booking app.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
+    "test": "nodemon server.js",
     "development": "mix",
     "watch": "mix watch",
     "watch-poll": "mix watch -- --watch-options-poll=1000",

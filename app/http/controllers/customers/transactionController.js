@@ -7,10 +7,8 @@ function transactionController() {
 const {order}= req.body
 /* initialize an object */
 var getAllresponse = JSON.parse(JSON.stringify(req.body.data));
-console.log(getAllresponse)
 
       var paymentChecksumres = getAllresponse.CHECKSUMHASH
-      console.log(paymentChecksumres)
       // var isVerifyChecksumhash = PaytmChecksum.verifySignature(JSON.stringify(getAllresponse), process.env.MERCHANT_KEY, paymentChecksumres);
       // if(isVerifyChecksumhash){
         /* initialize an object */
@@ -67,7 +65,7 @@ console.log(getAllresponse)
 
             post_res.on('end', function () {
               var res_obj= JSON.parse(response)
-              console.log('Response: ', res_obj);
+
       
 
               var isVerifySignature=PaytmChecksum.verifySignature(JSON.stringify(res_obj.body),process.env.MERCHANT_KEY,res_obj.head.signature)
