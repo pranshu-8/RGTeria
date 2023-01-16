@@ -25,18 +25,32 @@ function orderContoller() {
       }
       return res.redirect("/");
     },
+    async failure (req,res) {
+      let data={}
+      const eventEmitter = req.app.get("eventEmitter");
+      data.id=req.user._id
+      data.message="Payment Failed. Please reorder."
+      data.type='error'
+      eventEmitter.emit("orderplacedUser", data);
+      return res.json({ redirectsy: false });
+    },
     async store(req, res) {
       const {order} = req.body
       const neworder= new Order(  {_id: order._id,  customerId: order.customerId,
         items: order.items})
+        const eventEmitter = req.app.get("eventEmitter");
         neworder.save().then((result) => {
             Order.populate(result, { path: "customerId" }, (err, placedOrder) => {
               placedOrder
                 .save()
                 .then((ord) => {
-
-                  const eventEmitter = req.app.get("eventEmitter");
-                  eventEmitter.emit("orderPlaced", ord);
+                  let data={}
+                  data.id=ord._id
+                  eventEmitter.emit("orderPlaced", data);
+                  data.id=ord.customerId._id
+                  data.message="Order Placed Successfully"
+                  data.type='success'
+                  eventEmitter.emit("orderplacedUser", data);
                   let obj = req.session.cart.items
                   for (set in obj) {
                     (async () => {
@@ -46,11 +60,14 @@ function orderContoller() {
                         await Menu.findOneAndUpdate({ name: obj[set].item.name }, { count: new_count }, { useFindAndModify: false });
                       } catch (e) {
                         console.log(e)
+                        delete req.session.cart;
+                        return res.json({redirects:true })
+                       
                       }
                     })();
                   }
                   delete req.session.cart;
-                 res.json({redirects:true})
+                return res.json({redirects:true })
                 })
                 .catch((err) => {
                   console.log(err);
@@ -58,7 +75,13 @@ function orderContoller() {
             });
           })
           .catch((err) => {
-            return res.status(500).json({ message: "Something went wrong" });
+            let data={}
+            data.id=req.user._id
+            data.message="Payment done.Order couldn't be saved.Please contact admin."
+            data.type='error'
+            eventEmitter.emit("orderplacedUser", data);
+            delete req.session.cart;
+            return res.json({ redirects: false });
           });
     }
   };

@@ -207,14 +207,9 @@
                   
                   //order is generated successfully
                   if (data.redirects === true) {
-                    window.location.href = "/customer/orders";
-                  }
-                  else{
-
- 
-
-
-
+                    setTimeout(() => {
+          window.location.href = "/customer/orders";
+        }, 2500);
                   }
                 }).catch(error => {
                   console.log(error)
@@ -232,9 +227,21 @@
 
             } else if (data.STATUS === 'TXN_FAILURE') {
               msg='Payment failed. Please reorder.'
-             
+              const resp = await fetch(`http://localhost:5000/payFail`, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                })
+
             } else {
-              alert("Something wend wrong while payment contact to admin!!")
+              const resp = await fetch(`http://localhost:5000/payFail`, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                })
+              // alert("Something went wrong while payment contact to admin!!")
             }
 
 

@@ -140,7 +140,13 @@
 
   <main class="l-main"></main>
   <!--========== HOME ==========-->
-  
+  <% if(user.role==='customer'){ %>
+  <input
+  id="hiddenInputs"
+  type="hidden"
+  value="<%= JSON.stringify(user) %>"
+/>
+<% } %>
   <%- body %>
     </main>
 
