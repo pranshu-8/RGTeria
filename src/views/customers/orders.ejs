@@ -8,8 +8,10 @@
     href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
     rel="stylesheet"
   />
+  <script src="https://cdn.tailwindcss.com"></script>
   <body>
-    <section class="orders section light-section">
+    <section class="orders section light-section  ">
+
       <div class="container max-w-max mx-auto px-3">
         <h1 class="font-bold text-lg mb-4 underline md:text-2xl">All orders</h1>
         <% if(messages.success) { %>
@@ -42,15 +44,20 @@
             <% if(orders.length) { %> <% orders.forEach((order) => {
               let obj =order.items
               let total=0
+              let status= order.status
+              let classs="bg-rose-100"
+              if(status==='completed') {
+                classs=" bg-slate-700";
+              }
               
-              <!-- console.log(obj) -->
+               <!-- console.log(obj) -->
               %>
-            <tr>
+            <tr class="<%= classs %>">
               <td class="border px-4 py-2">
-                <a class=" text-gray-500 border link font-bold px-4 py-2" href="/customer/orders/<%= order._id %>"
+                <a class=" font-bold transform px-4 py-2 rounded-full  bg-green-600 button " href="/customer/orders/<%= order._id %>"
                   >Click to know order status</a
                 >
-                <p class="mt-5 text-blue-600  font-semibold"> Order ID: <%= order._id %></p>
+                <p class="mt-5 text-rose-600  font-semibold"> Order ID: <%= order._id %></p>
                 <% for(set in obj){ 
                   let eat=obj[set].item.name
                   let num=obj[set].qty

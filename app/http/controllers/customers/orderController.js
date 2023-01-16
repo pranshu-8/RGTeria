@@ -9,7 +9,7 @@ function orderContoller() {
     async index(req, res) {
       const orders = await Order.find({ customerId: req.user._id }, null, {
         sort: { createdAt: -1 },
-      }).limit(12);
+      }).limit(15);
 
       res.header(
         "Cache-Control",

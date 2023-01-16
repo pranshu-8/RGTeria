@@ -45,10 +45,10 @@
           if(food.id[food.id.length-1]==='9' ) {
             let avail= food.availibility
             let classs
-            if(avail) classs= "item1"
-            else classs= "item1-b"
+            if(avail) classs= "item1  bg-gradient-to-r  hover:from-pink-200 hover:to-yellow-300 transition duration-200 hover:scale-100"
+            else classs= "item1-b text-white"
             %>
-          <div class="<%= classs %> shadow-lg " >
+          <div class="<%= classs %> shadow-lg  " >
             <div class="w-full xs:w-4/5 md:w-64">
               <img
                 class="h-40 mb-4 mx-auto rounded"
@@ -57,7 +57,7 @@
               />
               <div class="text-center mb-4">
                 <div class="collection-item1 mb-4 text-xl">
-                  <a href="#"><%= food.name %></a>
+                  <a><%= food.name %></a>
                 </div>
                 <!-- <h2 class="mb-4 text-lg"><%= food.name %></h2> -->
                 <!-- <span
@@ -70,9 +70,8 @@
                   <% if (food.availibility) { %>
                     <button
                     data-food="<%= JSON.stringify(food) %>"
-                    class="add-to-cart py-1 px-5 rounded-full font-bold"
-                  >
-                    <span>+</span> <span class="ml-2 md:ml-4">Add</span>
+                    class="add-to-cart transform px-6 py-2 rounded-full  bg-indigo-700"                  >
+                    <span class="text-white">+</span> <span class="ml-2 md:ml-4 text-white">Add</span>
                   </button>
                   <% } %>
                   <% if(avail===false) { %>
@@ -93,8 +92,8 @@
           if(food.id[food.id.length-1]==='2' ) { 
             let avail= food.availibility
             let classs
-            if(avail) classs= "item2"
-            else classs= "item2-b"
+            if(avail) classs= "item2  bg-gradient-to-r  hover:from-pink-200 hover:to-yellow-300 transition duration-200 hover:scale-100"
+            else classs= "item2-b text-white"
             %>
           <div class="<%= classs %> shadow-lg ">
             <div class="w-full xs:w-4/5 md:w-64">
@@ -105,7 +104,7 @@
               />
               <div class="text-center mb-4">
                 <div class="collection-item2 mb-4 text-xl">
-                  <a href="#"><%= food.name %></a>
+                  <a ><%= food.name %></a>
                 </div>
                 <!-- <h2 class="mb-4 text-lg"><%= food.name %></h2> -->
                 <!-- <span
@@ -118,9 +117,8 @@
                   <% if (food.availibility) { %>
                     <button
                     data-food="<%= JSON.stringify(food) %>"
-                    class="add-to-cart py-1 px-5 rounded-full font-bold"
-                  >
-                    <span>+</span> <span class="ml-2 md:ml-4">Add</span>
+                    class="add-to-cart transform px-6 py-2 rounded-full  bg-indigo-700 "                  >
+                    <span class="text-white">+</span> <span class="ml-2 md:ml-4 text-white">Add</span>
                   </button>
                   <% } %>
                   <% if(avail===false) { %>
@@ -141,8 +139,8 @@
           if(food.id[food.id.length-1]=='d' ) { 
             let avail= food.availibility
             let classs
-            if(avail) classs= "item3"
-            else classs= "item3-b"
+            if(avail) classs= "item3  bg-gradient-to-r  hover:from-pink-200 hover:to-yellow-300 transition duration-200 hover:scale-100"
+            else classs= "item3-b text-white"
             %>
           <div class="<%= classs %> shadow-lg  ">
             <div class="w-full xs:w-4/5 md:w-64">
@@ -153,7 +151,7 @@
               />
               <div class="text-center mb-4">
                 <div class="collection-item3 mb-4 text-xl">
-                  <a href="#"><%= food.name %></a>
+                  <a ><%= food.name %></a>
                 </div>
                 <!-- <span
                   class="size py-1 px-4 rounded-full uppercase text-xs"
@@ -165,9 +163,8 @@
                   <% if (food.availibility) { %>
                     <button
                     data-food="<%= JSON.stringify(food) %>"
-                    class="add-to-cart py-1 px-5 rounded-full font-bold"
-                  >
-                    <span>+</span> <span class="ml-2 md:ml-4">Add</span>
+                    class="add-to-cart transform px-6 py-2 rounded-full  bg-indigo-700 "                  >
+                    <span class="text-white">+</span> <span class="ml-2 md:ml-4 text-white">Add</span>
                   </button>
                   <% } %>
                   <% if(avail===false) { %>
@@ -188,8 +185,8 @@
           if(food.id[food.id.length-1]=='e' ) {
             let avail= food.availibility
             let classs
-            if(avail) classs= "item4"
-            else classs= "item4-b"
+            if(avail) classs= "item4  bg-gradient-to-r  hover:from-pink-200 hover:to-yellow-300 transition duration-200 hover:scale-100"
+            else classs= "item4-b text-white"
             %>
           <div class="<%= classs %> shadow-lg">
             <div class="w-full xs:w-4/5 md:w-64">
@@ -200,7 +197,7 @@
               />
               <div class="text-center mb-4">
                 <div class="collection-item4 mb-4 text-xl">
-                  <a href="#"><%= food.name %></a>
+                  <a ><%= food.name %></a>
                 </div>
                 <!-- <span
                   class="size py-1 px-4 rounded-full uppercase text-xs"
@@ -212,10 +209,10 @@
                   <% if (food.availibility) { %>
                     <button
                     data-food="<%= JSON.stringify(food) %>"
-                    class="add-to-cart py-1 px-5 rounded-full font-bold"
+                    class="add-to-cart transform px-6 py-2 rounded-full  bg-indigo-700 "
                   >
-                    <span>+</span> <span class="ml-2 md:ml-4">Add</span>
-                  </button>
+                  <span class="text-white">+</span> <span class="ml-2 md:ml-4 text-white">Add</span>
+                </button>
                   <% } %>
                   <% if(avail===false) { %>
                     <h2 class="py-1 px-5 ml-2 md:ml-4 text-red-700 font-bold">UNAVAILABLE!!</h2>
@@ -235,8 +232,8 @@
           if(food.id[food.id.length-1]=='f' ) {
             let avail= food.availibility
             let classs
-            if(avail) classs= "item5"
-            else classs= "item5-b"
+            if(avail) classs= "item5  bg-gradient-to-r  hover:from-pink-200 hover:to-yellow-300 transition duration-200 hover:scale-100"
+            else classs= "item5-b text-white "
             %>
           <div class="<%= classs %> shadow-lg ">
             <div class="w-full xs:w-4/5 md:w-64">
@@ -247,7 +244,7 @@
               />
               <div class="text-center mb-4">
                 <div class="collection-item5 mb-4 text-xl">
-                  <a href="#"><%= food.name %></a>
+                  <a ><%= food.name %></a>
                 </div>
                 <!-- <span
                   class="size py-1 px-4 rounded-full uppercase text-xs"
@@ -259,9 +256,9 @@
                   <% if (food.availibility) { %>
                     <button
                     data-food="<%= JSON.stringify(food) %>"
-                    class="add-to-cart py-1 px-5 rounded-full font-bold"
+                    class="add-to-cart transform px-6 py-2 rounded-full  bg-indigo-700 "
                   >
-                    <span>+</span> <span class="ml-2 md:ml-4">Add</span>
+                    <span class="text-white">+</span> <span class="ml-2 md:ml-4 text-white">Add</span>
                   </button>
                   <% } %>
                   <% if(avail===false) { %>
@@ -277,11 +274,11 @@
 
 
       </div>
-      <a
+      <!-- <a
         href="/menu"
         class="font-bold text-green-700 block border-t pt-2 text-xl md:text-2xl"
         >View all food Items-></a
-      >
+      > -->
     </section>
 
     <script>

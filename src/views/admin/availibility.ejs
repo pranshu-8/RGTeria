@@ -56,10 +56,10 @@
           
               <td class="border px-4 py-3">
                 <form action="/admin/available" method="post">
-                    <input type="hidden" id="names" name="names" value= "<%= menus.name %>"">
+                    <input type="hidden"  id="names" name="names" value= "<%= menus.name %>"">
                     <label for="new_name" class="block text-sm font-bold ">Enter the new name:</label>
                     <input type="text" id="new_name" name="new_name" placeholder="Enter new name"  class="text-gray-900 dark:text-white shadow appearance-none border rounded  text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
-                    <input type="submit" value="Submit" class="btn-primary rounded-full text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline" >
+                    <input type="submit" value="Submit" class="text-white font-bold  px-2 py-2 rounded-full button bg-rose-500    " >
                 </form>
               </td>
               <td class="border px-4 py-4">
@@ -69,7 +69,7 @@
                 <label for="instock" class=" font-bold ">YES</label><br>
                 <input type="radio" id="instock" name="instock" value="0">
                 <label for="instock" class="font-bold ">NO</label>
-                <input type="submit" value="Submit"  class=" ml-4  btn-primary rounded-full text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline">
+                <input type="submit" value="Submit"class="text-white font-bold px-2 py-2 rounded-full  bg-rose-500 button  ml-4">
               </form>
               <p  class="<%= styl %> mt-1 ">Available : <span class="font-bold text-lg  underline"><%=text %></span> </p> 
             </td>
@@ -78,7 +78,7 @@
                 <input type="hidden" id="names" name="names" value= "<%= menus.name %>"">
                 <label for="fare" class="block text-sm font-bold ">Enter the new price:</label>
                 <input type="number" id="fare" name="fare" placeholder="Enter new price" class="text-gray-900 dark:text-white shadow appearance-none border rounded  text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
-                <input type="submit" value="Submit" class="btn-primary rounded-full text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline">
+                <input type="submit" value="Submit" class="text-white font-bold  px-2 py-2 rounded-full  bg-rose-500 button">
                </form> 
               <p class="block text-sm font-bold ">Current Price :₹ <%=menus.price %> </p> 
               </td>

@@ -420,22 +420,10 @@ section.hero {
   background: #f8f8f8;
 }
 
-.add-to-cart {
-  border: 2px solid #fe5f1e;
-  color: #fe5f1e;
-  transition: all 0.3s ease-in-out;
-}
-.add-to-cart:hover {
-  background: #fe5f1e;
-  border-color: #fff;
-  color: #fff;
-}
-.add-to-cart:focus {
-  outline: none;
-}
+
 
 .add-to-week {
-  border: 2px solid #fe5f1e;
+  border: 2px solid #19671c;
   color: #fe5f1e;
   transition: all 0.3s ease-in-out;
 }
@@ -522,7 +510,6 @@ section.login a:hover {
   z-index: var(--z-fixed);
   background-color: var(--body-color);
 }
-
 /*========== NAV ==========*/
 .nav {
   max-width: 1024px;
@@ -579,8 +566,9 @@ section.login a:hover {
   padding: 0.3rem 0.6rem 0.3rem 0.8rem;
 }
 .nav .shopping__cart:hover {
-  background: #fe5f1e;
+  background: #02be95;
   color: #27302c;
+
 }
 
 /* Show menu */

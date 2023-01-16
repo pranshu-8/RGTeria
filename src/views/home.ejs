@@ -18,7 +18,7 @@
               Feeling hungry?!<br />
               Then Fikar Not, We are here to serve your taste buds
           </h2>
-          <a href="/menu" class="button">Order Now</a>
+          <a href="/menu" class="focus:outline-none  transform px-10  py-3 rounded-full bg-green-500 button text-white font-bold mt-6  font-bold  padding-center">Order Now</a>
         </div>
 
         <img src="/img/about.jpg" alt="" style="border-radius: 10%;" class="home__img" />
@@ -30,10 +30,10 @@
       <span class="section-subtitle">Special</span>
       <h2 class="section-title">Our most popular servings of the Week</h2>
       <% if(user){ %>
-      <a class="section-subtitle   underline" href="/rank">Want  to check out the complete list? 📊  </a>
+      <a class="section-subtitle  underline" href="/rank">Want  to check out the complete list? 📊  -></a>
       <% } 
        else{ %>
-      <a class="section-subtitle underline" href="/login" >Log In to check out the complete list 📊  </a>
+      <a class="section-subtitle  underline" href="/login" >Log In to check out the complete list 📊  -> </a>
       <% } %>
 <% let item1= foods.top
      let item2= foods.middle
@@ -133,8 +133,8 @@
                       id="username" placeholder="Please check your email for updates to your feedback.."></textarea>
                   </div>
                 </div>
-                <div class="flex items-center justify-end p-6 py-1 border-t border-solid border-gray-300 rounded-b">
-                  <button type="submit" class="button" id="submitButton">
+                <div class="flex items-center justify-end px-6 py-1  border-t border-solid border-gray-300 rounded-b">
+                  <button type="submit" class="button bg-green-700 button   text-white font-bold mt-6 " id="submitButton">
                     Send
                   </button>
                 </div>
