@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8" />
 
-  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/>
-  <title>RGTeria</title>
+  <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport' />  <title>RGTeria</title>
   <link rel="stylesheet" href="/css/app.css" />
 
   <!-- // <link rel="shortcut icon" href="/img/logo.jpg" type="image/x-icon"> -->
@@ -140,7 +139,7 @@
 
   <main class="l-main"></main>
   <!--========== HOME ==========-->
-  <% if(user.role==='customer'){ %>
+  <% if(user?.role==='customer'){ %>
   <input
   id="hiddenInputs"
   type="hidden"
