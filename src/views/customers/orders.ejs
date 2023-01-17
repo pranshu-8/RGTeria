@@ -71,10 +71,13 @@
                    <p class="text-blue-600  font-semibold">Total Bill: ₹ <%= total%></p>
               </td>
 <%   
-var s = moment(order.createdAt).format('hh:mm:ss A');
-var p=moment(order.createdAt). format('MM/DD/YYYY')
+let moments=moment.utc(order.createdAt);
+moments.local()
+var s = moments.format('hh:mm:ss A');
+var p=moments.format('MM/DD/YYYY')
+let t=p
 p= p + " "+ s +" UTC";
-var dates = new Date(p);
+var dates = new Date(t);
 function formatAMPM(date) {
   var hours = date.getHours();
   var minutes = date.getMinutes();
@@ -88,8 +91,8 @@ function formatAMPM(date) {
 let k =formatAMPM(dates)
 %>
               <td class="border px-4 py-2 text-green-600 font-semibold">
-                 Time : <%=k%> </br>
-                 Date : <%= dates.getDate()%>/<%=dates.getMonth()%>/<%= dates.getFullYear() %>
+                 Time : <%= s %> </br>
+                 Date : <%= t %>
               </td>
             </tr>
             <% }) %> <% } else { %>
