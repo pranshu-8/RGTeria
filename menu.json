@@ -3,7 +3,7 @@
     "_id": {
       "$oid":  "5eee651f739f8c674fd616e9"
     },
-    "name": "Mixed Paratha",
+    "name": "Mixed Parantha",
     "image": "mixedparatha.jpg",
     "availibility":true,
     "price": 30,
@@ -14,7 +14,7 @@
     "_id": {
       "$oid": "5eee651f739f8c674fd617e9"
     },
-    "name": "Aloo Paratha",
+    "name": "Aloo Parantha",
     "image": "plate1.jpg",
     "availibility":true,
     "price": 25,
@@ -24,7 +24,7 @@
     "_id": {
       "$oid":"5eee651f739f8c674fd618e9"
     },
-    "name": "Plain Paratha",
+    "name": "Plain Parantha",
     "image": "plate2.jpg",
     "availibility":true,
     "price": 10,
@@ -35,7 +35,7 @@
     "_id": {
       "$oid": "5eee651f739f8c674fd619e9"
     },
-    "name": "Paneer Paratha",
+    "name": "Paneer Parantha",
     "image": "plate3.jpg",
     "availibility":true,
     "price": 35,
@@ -46,7 +46,7 @@
     "_id": {
       "$oid": "5eee651f739f8c674fd620e9"
     },
-    "name": "Kadhai Panner",
+    "name": "Kadhai Paneer",
     "image": "kadhai_paneer.jpg",
     "availibility":true,
     "price": 100,
@@ -79,7 +79,7 @@
     "_id": {
       "$oid": "5eee651f739f8c674fd623e9"
     },
-    "name": "Mattar Paneer",
+    "name": "Matar Paneer",
     "image": "mattar_paneer.jpg",
     "availibility":true,
     "price": 100,
@@ -108,6 +108,7 @@
     "count": 0
 
   },
+
   {
     "_id": {
       "$oid": "5eee651f739f8c674fd616e2"
@@ -145,7 +146,7 @@
     "_id": {
       "$oid": "5eee651f739f8c674fd619e2"
     },
-    "name": "veg Noodles",
+    "name": "Veg Noodles",
     "image": "veg_noodles.png",
     "availibility":true,
     "price": 30,
@@ -185,7 +186,17 @@
     "count": 0
 
   },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd623e2"
+    },
+    "name": "Dry Manchurian",
+    "image": "dry_manchurian.jpg",
+    "availibility":true,
+    "price": 50,
+    "count": 0
 
+  },
   {
     "_id": {
       "$oid": "5eee651f739f8c674fd732ee"
@@ -378,21 +389,41 @@
     "_id": {
       "$oid": "5eee651f739f8c674fd733ef"
     },
-    "name": "Dry Manchurian",
-    "image": "dry_manchurian.jpg",
+    "name": "Paneer Chilli",
+    "image": "Paneer_chilli.jpg",
     "availibility":true,
-    "price": 50,
+    "price": 80,
     "count": 0
-
   },
   {
     "_id": {
       "$oid": "5eee651f739f8c674fd734ef"
     },
-    "name": "Paneer Chili",
-    "image": "Paneer_chilli.jpg",
+    "name": "Veg Momos",
+    "image": "veg_momos.jpg",
     "availibility":true,
-    "price": 80,
+    "price": 30,
+    "count": 0
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd735ef"
+    },
+    "name": "Paneer Momos",
+    "image": "Paneer_momos.jpg",
+    "availibility":true,
+    "price": 40,
+    "count": 0
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd736ef"
+    },
+    "name": "Chicken Momos",
+    "image": "chicken_momos.jpg",
+    "availibility":true,
+    "price": 50,
     "count": 0
   }
+
 ]

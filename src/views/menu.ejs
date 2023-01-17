@@ -18,8 +18,8 @@
     >
       <!-- Heading   -->
       <div class="mb-2">
-        <a href="/menu" class="text-xl underline font-bold md:text-2xl">
-          All Foods
+        <a href="/menu" class="text-3xl text-green-700 font-bold md:text-3xl">
+          Menu
         </a>
       </div>
 
@@ -27,10 +27,10 @@
       <div class="container">
         <input
           id="filterInput"
-          class="border border-gray-400 p-2 w-3/4 mb-2 rounded-md text-green-700"
+          class="border border-gray-400 p-2 w-full mb-8 rounded-md text-green-700"
           type="text"
           placeholder="Search food "
-          style="margin-right: 100px; margin-top: 20px; max-width: 300px"
+          style="margin-right: 100px; margin-top: 20px; max-width: 600px"
         />
       </div>
       <hr />
@@ -45,7 +45,7 @@
           if(food.id[food.id.length-1]==='9' ) {
             let avail= food.availibility
             let classs
-            if(avail) classs= "item1  bg-gradient-to-r  hover:from-pink-200 hover:to-yellow-300 transition duration-200 hover:scale-100"
+            if(avail) classs= "item1  bg-gradient-to-r"
             else classs= "item1-b text-white"
             %>
           <div class="<%= classs %> shadow-lg  " >
@@ -92,7 +92,7 @@
           if(food.id[food.id.length-1]==='2' ) { 
             let avail= food.availibility
             let classs
-            if(avail) classs= "item2  bg-gradient-to-r  hover:from-pink-200 hover:to-yellow-300 transition duration-200 hover:scale-100"
+            if(avail) classs= "item2  bg-gradient-to-r "
             else classs= "item2-b text-white"
             %>
           <div class="<%= classs %> shadow-lg ">
@@ -139,7 +139,7 @@
           if(food.id[food.id.length-1]=='d' ) { 
             let avail= food.availibility
             let classs
-            if(avail) classs= "item3  bg-gradient-to-r  hover:from-pink-200 hover:to-yellow-300 transition duration-200 hover:scale-100"
+            if(avail) classs= "item3  bg-gradient-to-r"
             else classs= "item3-b text-white"
             %>
           <div class="<%= classs %> shadow-lg  ">
@@ -185,7 +185,7 @@
           if(food.id[food.id.length-1]=='e' ) {
             let avail= food.availibility
             let classs
-            if(avail) classs= "item4  bg-gradient-to-r  hover:from-pink-200 hover:to-yellow-300 transition duration-200 hover:scale-100"
+            if(avail) classs= "item4  bg-gradient-to-r"
             else classs= "item4-b text-white"
             %>
           <div class="<%= classs %> shadow-lg">
@@ -226,13 +226,13 @@
 
       
         <!-- Others -->
-        <h2 class="font-semibold mb-4 text-xl border-b md:text-2xl">Rolls/ Manchurian / Others</h2>
+        <h2 class="font-semibold mb-4 text-xl border-b md:text-2xl">Rolls/Momos/Others</h2>
         <div class="wrapper1" id="names5">
           <% foods.forEach(function(food) { %> <%
           if(food.id[food.id.length-1]=='f' ) {
             let avail= food.availibility
             let classs
-            if(avail) classs= "item5  bg-gradient-to-r  hover:from-pink-200 hover:to-yellow-300 transition duration-200 hover:scale-100"
+            if(avail) classs= "item5  bg-gradient-to-r "
             else classs= "item5-b text-white "
             %>
           <div class="<%= classs %> shadow-lg ">

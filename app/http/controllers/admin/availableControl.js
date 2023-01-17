@@ -24,6 +24,9 @@ function orderController() {
         }
         updates();
         if(change!=null) await Menu.findOneAndUpdate({name: names}, change, {useFindAndModify: false});
+        const eventEmitter=req.app.get("eventEmitter")
+        let s="babu"
+        eventEmitter.emit("availchange",s)
         res.redirect("/admin/available")
     },
     index : async (req, res) =>{

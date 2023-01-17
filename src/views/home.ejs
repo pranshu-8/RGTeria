@@ -31,12 +31,7 @@
     <section class="menu  bd-container section font-bold" id="menu">
       <span class="section-subtitle">Special</span>
       <h2 class="section-title">Our most popular servings of the Week</h2>
-      <% if(user){ %>
-      <a class="section-subtitle  underline mb-2" href="/rank">Want  to check out the complete list? 📊  -></a>
-      <% } 
-       else{ %>
-      <a class="section-subtitle  underline mb-2" href="/login" >Log In to check out the complete list 📊  -> </a>
-      <% } %>
+
 <% let item1= foods.top
      let item2= foods.middle
      let item3=foods.bottom
@@ -47,26 +42,85 @@
         <div class="menu__content">
           <img src=" <%=img.concat(item1.image) %> " alt="" class="menu__img" />
           <h3 class="menu__name"><%= item1.name %></h3>
-           <span class="menu__detail">Number of orders: <%= item1.count %></span>
+           <span class="menu__detail">Number of times ordered: <%= item1.count %></span>
           <span class="menu__preci"> Price : ₹<%= item1.price %></span> 
-          <a href="/menu#week" class="add-to-week button menu__button"><i class="bx bx-cart-alt"></i></a>
+          <% if(item1.availibility===true){ %>
+            <button
+            data-food="<%= JSON.stringify(item1) %>"
+            class="add-to-cart button menu__button">
+            <i class="bx bx-cart-alt"></i>
+          </button>
+        <% } 
+        else{ %>
+          <button
+          data-food="<%= JSON.stringify(item1) %>"
+          class="unavail bg-red-800  menu__button">
+          <i class="bx bx-cart-alt"></i>
+        </button>
+      <% } %>
         </div>
 
         <div class="menu__content">
           <img src="<%=img.concat(item2.image) %> " alt="" class="menu__img" />
           <h3 class="menu__name"><%= item2.name %></h3>
-           <span class="menu__detail">Number of orders: <%= item2.count %></span>
+           <span class="menu__detail">Number of times ordered: <%= item2.count %></span>
           <span class="menu__preci"> Price :₹<%= item2.price %></span> 
-          <a href="/menu#week" class="add-to-week button menu__button "><i class="bx bx-cart-alt"></i></a>
+          <% if(item2.availibility===true){ %>
+          <button
+          data-food="<%= JSON.stringify(item2) %>"
+          class="add-to-cart button menu__button">
+          <i class="bx bx-cart-alt"></i>
+        </button>
+      <% } 
+      else{ %>
+        <button
+        data-food="<%= JSON.stringify(item2) %>"
+        class="unavail bg-red-800  menu__button">
+        <i class="bx bx-cart-alt"></i>
+      </button>
+    <% } %>
+
         </div>
 
         <div class="menu__content">
           <img src="<%=img.concat(item3.image) %> " alt="" class="menu__img" />
           <h3 class="menu__name"><%= item3.name %></h3>
-          <span class="menu__detail">Number of orders: <%= item3.count %></span>
+          <span class="menu__detail">Number of times ordered: <%= item3.count %></span>
           <span class="menu__preci"> Price :₹<%= item3.price %></span>
-          <a href="/menu#week" class="add-to-week button menu__button "><i class="bx bx-cart-alt"></i></a>
+          <% if(item3.availibility===true){ %>
+            <button
+            data-food="<%= JSON.stringify(item3) %>"
+            class=" add-to-cart button menu__button">
+            <i class="bx bx-cart-alt"></i>
+          </button>
+        <% } 
+        else{ %>
+          <button
+          data-food="<%= JSON.stringify(item3) %>"
+          class="unavail bg-red-800  menu__button "  >
+          <i class="bx bx-cart-alt"></i>
+        </button>
+      <% } %>
         </div>
+      </div>
+      <div class="mt-14">
+      <% if(user){ %>
+        <!-- <a class="section-subtitle  text-white px-6 py-2 rounded-full  bg-green-600  " href="/rank">Want  to check out the complete list? 📊  -></a> -->
+        <button
+        class="section-subtitle focus:outline-none  transform px-6 py-2 rounded-full mx-auto justify-center    rounded-full text-white font-bold mt-6  padding-center"
+        style="background-color: #069c54;"
+        onclick="goToR();">
+        Want  to check out the complete list? 🧐->
+        </button   >   
+        <% } 
+         else{ %>
+        <button
+        class="section-subtitle focus:outline-none  transform px-6 py-2 rounded-full mx-auto justify-center   rounded-full text-white font-bold mt-6  padding-center"
+        style="background-color: #069c54;"
+        onclick="goToL();">
+        Log In to check out the complete list 📊  ->
+        </button   >  
+        <% } %>
       </div>
     </section>
 
@@ -174,6 +228,12 @@
             .classList.toggle("hidden");
           document.getElementById(modalID).classList.toggle("flex");
           document.getElementById(modalID + "-backdrop").classList.toggle("flex");
+        }
+        function goToR(path){
+          window.location.href= "/rank"
+        }
+        function goToL(path){
+          window.location.href= "/login"
         }
       </script>
 </body>

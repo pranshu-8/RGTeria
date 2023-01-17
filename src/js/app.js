@@ -164,6 +164,28 @@ addToCart.forEach((btn) => {
     updateCart(food);
   });
 });
+repeatCart.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    let food = JSON.parse(btn.dataset.food);
+    updateCart(food);
+  });
+});
+let unavailBtn =document.querySelectorAll(".unavail");
+const unavailNoty = () => {
+      new Noty({
+        type: "error",
+        timeout: 2000,
+        text: "Item currently unavailable",
+        progressBar: false,
+      }).show();
+    }
+    unavailBtn.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        unavailNoty();
+      });
+    });
 // Resume booking alert
 // function bookStatusResume(){
 //   const eventEmitter =req.app.get("eventEmitter");
@@ -253,6 +275,9 @@ socket.on("orderUpdated", (data) => {
     progressBar: false,
   }).show();
 });
+socket.on("availchange", (data) => {
+document.location.reload();
+});
 socket.on("bookingresumed", (data) => {
   new Noty({
     type: "success",
@@ -261,8 +286,8 @@ socket.on("bookingresumed", (data) => {
     progressBar: false,
   }).show();
 });
-
 socket.on("bookingclosed", (data) => {
+
   new Noty({
     type: "error",
     timeout: 1000,

@@ -2493,6 +2493,24 @@ function initAdmin(socket) {
                     });
 
                 }); 
+                // unavailable notifications
+
+                let unavailBtn =document.querySelectorAll(".unavail");
+const unavailNoty = () => {
+    new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
+        type: "error",
+        timeout: 2000,
+        text: "Item currently unavailable",
+        progressBar: false,
+      }).show();
+    }
+    unavailBtn.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        unavailNoty();
+      });
+    });
+
 
                    // Resume Booking Alert
                 // function bookStatusResume(){
@@ -2586,8 +2604,11 @@ function initAdmin(socket) {
                         progressBar: false
                     }).show();
                 });
-                
+                socket.on("availchange", (data) => {
+                    document.location.reload();
+                    });
                 socket.on("bookingresumed", (data) => {
+                    document.location.reload();
                     new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
                       type: "success",
                       timeout: 3000,
@@ -2596,6 +2617,7 @@ function initAdmin(socket) {
                     }).show();
                   });
                   socket.on("orderplacedUser", (data) => {
+                  
                     new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
                       type: data.type,
                       timeout: 8000,
@@ -2604,6 +2626,7 @@ function initAdmin(socket) {
                     }).show();
                   });
                   socket.on("bookingclosed", (data) => {
+                    document.location.reload();
                     new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
                       type: "error",
                       timeout: 8000,

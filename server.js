@@ -96,6 +96,9 @@ io.on("connection", (socket) => {
     socket.join(orderId);
   });
 });
+eventEmitter.on("availchange", (data) => {
+  io.emit("availchange", data);
+});
 eventEmitter.on("bookingclosed", (data) => {
   io.emit("bookingclosed", data);
   io.to("adminRoom").emit("bookingclosed", data);
