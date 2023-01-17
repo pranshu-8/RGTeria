@@ -27,9 +27,6 @@ connection
   .once("open", () => {
     console.log("Database connected...");
   })
-  .catch((err) => {
-    console.log("Connection failed...");
-  });
 
 // Session store
 let mongoStore = new MongoDbStore({
