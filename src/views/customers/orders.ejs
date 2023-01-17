@@ -81,9 +81,15 @@ function addHours(date, hours) {
   return date;
 }
 
+function addMinutes(date, hours) {
+  date.setMinutes(date.getMinutes() + hours);
+
+  return date;
+}
 
 
-const newDate = addHours(dates, 6);
+const newDate = addHours(dates, 5);
+const newDates = addMinutes(newDate, 30)
 function formatAMPM(date) {
   var hours = date.getHours();
   var minutes = date.getMinutes();
@@ -94,11 +100,11 @@ function formatAMPM(date) {
   var strTime = hours + ':' + minutes + ' ' + ampm;
   return strTime;
 }
-let k =formatAMPM(newDate)
+let k =formatAMPM(newDates)
 %>
               <td class="border px-4 py-2 text-green-600 font-semibold">
                  Time : <%= k%> </br>
-                 Date : <%= newDate.getDate()%>/<%=newDate.getMonth()%>/<%= newDate.getFullYear() %>
+                 Date : <%= newDates.getDate()%>/<%=newDates.getMonth()%>/<%= newDates.getFullYear() %>
               </td>
             </tr>
             <% }) %> <% } else { %>
