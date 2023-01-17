@@ -44,9 +44,9 @@ function orderContoller() {
               placedOrder
                 .save()
                 .then((ord) => {
+                
+                  eventEmitter.emit("orderPlaced", ord);
                   let data={}
-                  data.id=ord._id
-                  eventEmitter.emit("orderPlaced", data);
                   data.id=ord.customerId._id
                   data.message="Order Placed Successfully"
                   data.type='success'

@@ -105,7 +105,7 @@ eventEmitter.on("bookingresumed", (data) => {
   io.to("adminRoom").emit("bookingresumed", data);
 });
 eventEmitter.on("orderUpdated", (data) => {
-  io.to(`order_${data.customerId._id}`).emit("orderUpdated", data);
+  io.to(`order_${data.id}`).emit("orderUpdated", data);
 });
 
 eventEmitter.on("orderPlaced", (data) => {

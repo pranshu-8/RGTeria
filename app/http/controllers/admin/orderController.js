@@ -5,7 +5,7 @@ function orderController() {
      index (req, res) {
        order.find({ status: { $ne: "completed" } }, null, {
         sort: { "createdAt": -1 },
-      }).limit(20).populate("customerId")
+      }).limit(25).populate("customerId")
         .exec((err, orders) => {
           if (req.xhr) {
             return res.json(orders);
