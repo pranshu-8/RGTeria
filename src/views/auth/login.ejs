@@ -6,14 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
-<link   rel="stylesheet" 
-        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
-        crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" 
-        crossorigin="anonymous">
-</script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+  </script>
+
 <body>
   <section class="login flex justify-center pt-18">
     <div style="width: 300px; height: 80px;">
@@ -24,30 +22,32 @@
             <%= messages.error%>
           </span>
           <% }%>
-          <div class="flex items-center justify-between md:justify-center mt-2 padding-center ">
-            <img width="60px" class="mx-auto justify-center" style="margin-bottom:3px; " alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+            <div class="flex items-center justify-between md:justify-center mt-2 padding-center ">
+              <img width="60px" class="mx-auto justify-center" style="margin-bottom:3px; " alt="Google sign-in"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
             </div>
-          <div class="flex items-center justify-between md:justify-around mt-2">
-            
+            <div class="flex items-center justify-between md:justify-around mt-2">
+
               <button
-                class=" focus:outline-none  transform px-8 py-2 rounded-full mx-auto justify-center bg-indigo-600  rounded-full text-white font-bold mt-6  padding-center "  name="role"
-                 value="customer" type="submit">
+                class=" focus:outline-none  transform px-8 py-2 rounded-full mx-auto justify-center bg-indigo-600  rounded-full text-white font-bold mt-6  padding-center "
+                name="role" value="customer" type="submit">
                 Log In as Customer
               </button>
-            
-          </div>
-          <div class="flex items-center justify-between md:justify-around mt-2>
+
+            </div>
+            <div class="flex items-center justify-between md:justify-around mt-2>
     
           <div class=" mt-2">
-            <button class="focus:outline-none  transform px-6 py-2 rounded-full mx-auto justify-center   bg-indigo-600 rounded-full text-white font-bold mt-6  padding-center"
-            name="role" value="admin"    type="submit" >
-             Log In as Admin
-            </button>
-          </div>
-          </div>
+              <button
+                class="focus:outline-none  transform px-6 py-2 rounded-full mx-auto justify-center   bg-indigo-600 rounded-full text-white font-bold mt-6  padding-center"
+                name="role" value="admin" type="submit">
+                Log In as Admin
+              </button>
+            </div>
+    </div>
 
-      </form>
-      <!-- <a
+    </form>
+    <!-- <a
             class="inline-block align-baseline font-bold text-sm"
             href="/register"
           >

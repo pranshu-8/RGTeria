@@ -92,10 +92,9 @@
                         </div>
                         <% } else if(statuss===false){ %>
                           <div id="card-element"
-                            class="w-11/12 m-auto text-red-800 font-bold border-gray-400 px-6 py-2 rounded-full focus:outline-none border bg-gray-200">
-                            <p>One or more item in the cart is unavailable.</p>
-                            <p>Please clear cart and go back to menu.</p>
-                            <p>To check the latest availibility.</p>
+                            class="w-11/12 m-auto text-white mt-7 font-bold border-gray-400 bg-red-600 px-6 py-2 rounded-full focus:outline-none border bg-gray-200">
+                            <p>Item(s) in cart unavailable.</p>
+                            <p>Please clear cart & go to menu.</p>
                           </div>
 
 
@@ -209,7 +208,7 @@
                   if (data.redirects === true) {
                     setTimeout(() => {
           window.location.href = "/customer/orders";
-        }, 2500);
+        }, 2900);
                   }
                 }).catch(error => {
                   console.log(error)

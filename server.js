@@ -76,6 +76,9 @@ app.set("view engine", "ejs");
 
 // routes
 require(path.join(__dirname, "/routes/web"))(app);
+app.get('/terms', (req, res) => {
+  res.sendFile(__dirname + "/src/footerInfo/footer.html");
+});
 // error page
 app.get("*", (req, res) => {
   res.sendFile(__dirname + "/src/404 page/404.html");
@@ -95,9 +98,11 @@ io.on("connection", (socket) => {
 });
 eventEmitter.on("bookingclosed", (data) => {
   io.emit("bookingclosed", data);
+  io.to("adminRoom").emit("bookingclosed", data);
 });
 eventEmitter.on("bookingresumed", (data) => {
   io.emit("bookingresumed", data);
+  io.to("adminRoom").emit("bookingresumed", data);
 });
 eventEmitter.on("orderUpdated", (data) => {
   io.to(`order_${data.id}`).emit("orderUpdated", data);
