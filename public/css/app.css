@@ -1148,3 +1148,13 @@ input[type=number]:focus {
 }
  
 /* width of newitem form */
+
+/* cart delete button css */
+.removed{
+
+  padding: 100px;
+
+}
+.removed:hover{
+background-color: rgb(224, 93, 93);
+}

@@ -49,7 +49,6 @@ const cartController = () => {
       }
 
       let cart = req.session.cart;
-
       // check if doesn't added in cart
       if (!cart.items[req.body._id]) {
         cart.items[req.body._id] = {
@@ -65,6 +64,22 @@ const cartController = () => {
       }
 
       return res.status(200).json({ totalqty: req.session.cart });
+    },
+    remove: (req, res) => {
+      // for first time add item in cart
+     
+      let cart = req.session.cart;
+      let food= req.body
+      // check if doesn't added in cart
+      cart.totalQty = cart.totalQty - food.qty;
+      cart.totalPrice = cart.totalPrice - food.qty*food.item.price;
+      food.qty = 0;
+      delete cart.items[req.body.item._id];
+      if(cart.totalPrice===0) {
+      delete req.session.cart;
+      return res.status(200).json({ totalqty: 0});
+      }
+      return res.status(200).json({ totalqty: req.session.cart});
     },
     clear: (req,res)=>{
       delete req.session.cart;
