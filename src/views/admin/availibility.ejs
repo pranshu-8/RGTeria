@@ -34,8 +34,8 @@
           <thead class="text-black-1000">
             <tr>
               <th class="px-8 py-3 text-left">Food Item Name</th>
-              <th class="px-8 py-3 text-left">Change Name</th>
                <th class="px-4 py-3 text-left">Change Availibility</th>
+               <th class="px-8 py-3 text-left">Change Name</th>
               <th class="px-8 py-3 text-left">Change Price</th>
             </tr>
           </thead>
@@ -50,11 +50,21 @@
                 else styl= "text-red-800"
                 %>
             <tr>
-              <td class="border px-4 py-3 text-pink-600  font-bold" >
+              <td class="border px-2 py-3 text-pink-600  font-bold" >
                 <%= menus.name %>
               </td>
-          
-              <td class="border px-4 py-3">
+              <td class="border px-4 py-4">
+                <form action="/admin/available" method="post">
+                  <input type="hidden" id="names" name="names" value= "<%= menus.name %>"">
+                  <input type="radio" id="instock" name="instock" value="1">
+                  <label for="instock" class=" font-bold ">YES</label><br>
+                  <input type="radio" id="instock" name="instock" value="0">
+                  <label for="instock" class="font-bold ">NO</label>
+                  <input type="submit" value="Submit"class="text-white font-bold px-2 py-2 rounded-full  bg-indigo-600 mb-2  ml-4">
+                </form>
+                <p  class="<%= styl %> mt-1 ">Available : <span class="font-bold text-lg  underline"><%=text %></span> </p> 
+              </td>
+              <td class="border px-2 py-3">
                 <form action="/admin/available" method="post">
                     <input type="hidden"  id="names" name="names" value= "<%= menus.name %>"">
                     <label for="new_name" class="block text-sm font-bold ">Enter the new name:</label>
@@ -62,18 +72,7 @@
                     <input type="submit" value="Submit" class="text-white font-bold  px-2 py-2 rounded-full  bg-indigo-600    " >
                 </form>
               </td>
-              <td class="border px-4 py-4">
-              <form action="/admin/available" method="post">
-                <input type="hidden" id="names" name="names" value= "<%= menus.name %>"">
-                <input type="radio" id="instock" name="instock" value="1">
-                <label for="instock" class=" font-bold ">YES</label><br>
-                <input type="radio" id="instock" name="instock" value="0">
-                <label for="instock" class="font-bold ">NO</label>
-                <input type="submit" value="Submit"class="text-white font-bold px-2 py-2 rounded-full  bg-indigo-600 mb-2  ml-4">
-              </form>
-              <p  class="<%= styl %> mt-1 ">Available : <span class="font-bold text-lg  underline"><%=text %></span> </p> 
-            </td>
-            <td class="border px-4 py-3">
+             <td class="border px-2 py-3">
                <form action="/admin/available" method="post">
                 <input type="hidden" id="names" name="names" value= "<%= menus.name %>"">
                 <label for="fare" class="block text-sm font-bold ">Enter the new price:</label>
