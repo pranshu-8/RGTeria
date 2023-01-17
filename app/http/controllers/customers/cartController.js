@@ -21,7 +21,7 @@ const cartController = () => {
         let nm= listid[ct]
         let num =req?.session?.cart?.items
         
-        let lt= num[nm].item.name
+        let lt= num[nm]?.item?.name
         const meal=  await Menu.find({name : lt})
 
         if(meal[0]?.availibility===true) {
@@ -71,14 +71,35 @@ const cartController = () => {
       let cart = req.session.cart;
       let food= req.body
       // check if doesn't added in cart
-      cart.totalQty = cart.totalQty - food.qty;
-      cart.totalPrice = cart.totalPrice - food.qty*food.item.price;
-      food.qty = 0;
+      cart.totalQty = cart.totalQty - cart.items[req.body.item._id].qty;
+      cart.totalPrice = cart.totalPrice - cart.items[req.body.item._id].qty*food.item.price;
+
       delete cart.items[req.body.item._id];
       if(cart.totalPrice===0) {
       delete req.session.cart;
       return res.status(200).json({ totalqty: 0});
       }
+      return res.status(200).json({ totalqty: req.session.cart});
+    },
+    minus: (req, res) => {
+      // for first time add item in cart
+      let cart = req.session.cart;
+      let food= req.body
+      cart.totalQty = cart.totalQty - 1;
+      cart.totalPrice = cart.totalPrice - food.item.price;
+      cart.items[req.body.item._id].qty=cart.items[req.body.item._id].qty -1
+      // delete cart.items[req.body.item._id];
+      return res.status(200).json({ totalqty: req.session.cart});
+    },
+    plus: (req, res) => {
+      // for first time add item in cart
+      let cart = req.session.cart;
+      let food= req.body
+      // check if doesn't added in cart
+      cart.totalQty = cart.totalQty + 1;
+      cart.totalPrice = cart.totalPrice + food.item.price;
+      cart.items[req.body.item._id].qty=cart.items[req.body.item._id].qty +1
+      // delete cart.items[req.body.item._id];
       return res.status(200).json({ totalqty: req.session.cart});
     },
     clear: (req,res)=>{

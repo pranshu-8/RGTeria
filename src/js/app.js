@@ -173,7 +173,7 @@ const removeCart = (food) => {
     .post("/remove-cart", food)
     .then((res) => {
       cartCounter.innerText = res.data.totalqty.totalQty;
-      amounts.innerText= "50"
+      amountDisplay.innerText="₹ " + res.data.totalqty.totalPrice;
       let sendmsg= food.item.name + " removed from cart"
       new Noty({
         type: "success",
@@ -202,6 +202,68 @@ removed.forEach((btn) => {
   });
 });
 
+
+const minusCart = (food) => {
+  // axios
+if(food.qty===1){
+  new Noty({
+    type: "error",
+    timeout: 2000,
+    text: "Press delete buton to remove item",
+    progressBar: false,
+  }).show();
+}
+else{
+  axios
+    .post("/minus-cart", food)
+    .then((res) => {
+      cartCounter.innerText = res.data.totalqty.totalQty;
+      amountDisplay.innerText="₹ " + res.data.totalqty.totalPrice;
+    })
+    .catch((err) => {
+      new Noty({
+        type: "error",
+        timeout: 1000,
+        text: "Something went wrong",
+        progressBar: false,
+      }).show();
+    });
+  }
+};
+let minus = document.querySelectorAll(".minus");
+minus.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    let food = JSON.parse(btn.dataset.food);
+    minusCart(food);
+  });
+});
+const plusCart = (food) => {
+  // axios
+  axios
+    .post("/plus-cart", food)
+    .then((res) => {
+      cartCounter.innerText = res.data.totalqty.totalQty;
+      amountDisplay.innerText="₹ " + res.data.totalqty.totalPrice;
+    })
+    .catch((err) => {
+      new Noty({
+        type: "error",
+        timeout: 1000,
+        text: "Something went wrong",
+        progressBar: false,
+      }).show();
+    });
+
+};
+let plus = document.querySelectorAll(".plus");
+removed.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    let food = JSON.parse(btn.dataset.food);
+    plusCart(food);
+  });
+});
 
 let unavailBtn =document.querySelectorAll(".unavail");
 const unavailNoty = () => {

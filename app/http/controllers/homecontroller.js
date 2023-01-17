@@ -16,13 +16,29 @@ const homeController = () => {
     index: async (req, res) => {
       let users=req?.user?.role
       users==="customer"?users=req.users:users=false;
-      const food = await Menu.find().sort({count: -1}).limit(3);
-      let foods={
-        top: food[0],
-        middle: food[1],
-        bottom: food[2]
-      }
-      return res.render("home", { foods: foods} );
+      let food = await Menu.find().sort({count: -1});
+      let veg=[];
+      let non_veg=[];
+      food.forEach(function(foodies) {
+        const match= ()=>{
+          let ct=0;
+          let s1='5eee651f739f8c674fd738ef'
+          let s2='5eee651f739f8c674fd739ef'
+          while(ct!=foodies.id.length){
+            if(foodies.id[ct]!=s1[ct] && foodies.id[ct]!=s2[ct]) return false;
+            ct++;
+          }
+          return true;
+        }
+        if(foodies.id[foodies.id.length-1]==='d' || foodies.id[foodies.id.length-1]==='e' || match()) {
+            non_veg.push(foodies)
+        }
+        else{
+          veg.push(foodies)
+        }
+      })
+ 
+      return res.render("home", { veg, non_veg} );
     },
     menu: async (req, res) => {
       const foods = await Menu.find().sort({availibility: -1});

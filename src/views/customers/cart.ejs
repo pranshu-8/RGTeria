@@ -21,30 +21,40 @@
         <div class="main flex flex-col md:flex-row px-2">
           <div class="left w-full md:w-8/12 md:h-screen md:pr-12">
             <div class="items-list h-96 md:h-3/4 pr-4 overflow-auto md:overflow-none">
-
               <% for(let food of Object.values(session.cart.items)) { %>
                 <% var test=session.cart.totalPrice %>
                 <% var mid=process.env.MID %>
                   <div class="flex justify-between items-center my-8">
-                    <img class="w-24 rounded" src="/img/<%= food.item.image%>" alt="" />
+                    <img class="w-24 rounded" src="/img/<%= food?.item?.image%>" alt="" />
                     <div class="flex-1 ml-4">
                       <h1 class="font-bold">
-                        <%= food.item.name%>
+                        <%= food?.item?.name%>
                       </h1>
                       <span>
-                        <%= food.item.size%>
+                        <%= food?.item?.size%>
                       </span>
                       <p class="flex-1 font-semibold ">
-                        Pcs <%= food.qty%>
+                       Pcs: <span id="<%= food?.item?._id %>"><%= food?.qty%></span> <br>
+                       <span class="font-bold text-lg">₹<%=food?.item?.price%></span>
                       </p>
                     </div>
-                    <span class="hidden md:inline flex-1">Pcs <%= food.qty%></span>
-                    <span class="font-bold text-lg">₹ <%= food.item.price%></span>
+                    <!-- <span class="hidden md:inline text-lg font-bold flex-1">₹<%=food?.item?.price%></span> -->
+                    <!-- <span class="font-bold text-lg">₹<%=food?.item?.price%></span> -->
                     <button
                     data-food="<%= JSON.stringify(food) %>"
-                    class="removed rounded-full px-5 py-3 ml-2 " >
-                    <span class="text-white">🗑️</span>
+                    class="minus   rounded-full px-3 py-2 ml-2" >
+                    <span class="text-white">➖</span>
                   </button>
+                  <button
+                  data-food="<%= JSON.stringify(food) %>"
+                  class="plus   rounded-full px-3 py-2  " >
+                  <span class="text-white">➕</span>
+                  </button>
+                  <button
+                  data-food="<%= JSON.stringify(food) %>"
+                  class="removed  rounded-full px-2 py-2" >
+                  <span class="text-white">🗑️</span>
+                </button>
                   </div>
                   <% } %>
             </div>
@@ -54,7 +64,7 @@
             <div class="text-center relative md:static py-4">
               <div class="">
                 <span class="text-lg font-bold">Total Amount:</span>
-                <span class="amount text-2xl font-bold ml-4 text-green-500 md:text-3xl">₹ <%= session.cart.totalPrice%>
+                <span id="cash" class="amount text-2xl font-bold ml-4 text-green-500 md:text-3xl">₹ <%= session.cart.totalPrice%>
                 </span>
               </div>
               <% if(user) { %>

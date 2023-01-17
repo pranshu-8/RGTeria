@@ -31,10 +31,10 @@
     <section class="menu  bd-container section font-bold" id="menu">
       <span class="section-subtitle">Special</span>
       <h2 class="section-title">Our most popular servings of the Week</h2>
-
-<% let item1= foods.top
-     let item2= foods.middle
-     let item3=foods.bottom
+      <span class="section-subtitle">Top 3 in Vegetarian Menu:</span>
+<% let item1= veg[0]
+     let item2= veg[1]
+     let item3=veg[2]
      let img= '/img/'
      let users= user?.role
       %>
@@ -52,11 +52,11 @@
           </button>
         <% } 
         else{ %>
-          <button
+          <!-- <button
           data-food="<%= JSON.stringify(item1) %>"
           class="unavail bg-red-800  menu__button">
           <i class="bx bx-cart-alt"></i>
-        </button>
+        </button> -->
       <% } %>
         </div>
 
@@ -73,11 +73,11 @@
         </button>
       <% } 
       else{ %>
-        <button
+        <!-- <button
         data-food="<%= JSON.stringify(item2) %>"
         class="unavail bg-red-800  menu__button">
         <i class="bx bx-cart-alt"></i>
-      </button>
+      </button> -->
     <% } %>
 
         </div>
@@ -95,33 +95,91 @@
           </button>
         <% } 
         else{ %>
-          <button
+          <!-- <button
           data-food="<%= JSON.stringify(item3) %>"
           class="unavail bg-red-800  menu__button "  >
-          <i class="bx bx-cart-alt"></i>
-        </button>
+           <i class="bx bx-cart-alt"></i>
+        </button>  -->
       <% } %>
         </div>
+        <!-- <h2 class="section-title">Top 3 in Non- Vegetarian Menu:</h2> -->
       </div>
-      <div class="mt-14">
-      <% if(user){ %>
-        <!-- <a class="section-subtitle  text-white px-6 py-2 rounded-full  bg-green-600  " href="/rank">Want  to check out the complete list? 📊  -></a> -->
-        <button
-        class="section-subtitle focus:outline-none  transform px-6 py-2 rounded-full mx-auto justify-center    rounded-full text-white font-bold mt-6  padding-center"
-        style="background-color: #069c54;"
-        onclick="goToR();">
-        Want  to check out the complete list? 🧐->
-        </button   >   
-        <% } 
-         else{ %>
-        <button
-        class="section-subtitle focus:outline-none  transform px-6 py-2 rounded-full mx-auto justify-center   rounded-full text-white font-bold mt-6  padding-center"
-        style="background-color: #069c54;"
-        onclick="goToL();">
-        Log In to check out the complete list 📊  ->
-        </button   >  
+
+      <section class="menu  bd-container section font-bold" id="menu">
+        <!-- <span class="section-subtitle">Special</span>
+        <h2 class="section-title">Our most popular servings of the Week</h2> -->
+        <span class="section-subtitle">Top 3 in Non-Vegetarian Menu:</span>
+        <% let items1= non_veg[0]
+        let items2= non_veg[1]
+        let items3=non_veg[2] 
+        %>
+        <div class="menu__container bd-grid">
+          <div class="menu__content">
+            <img src=" <%=img.concat(items1.image) %> " alt="" class="menu__img" />
+            <h3 class="menu__name"><%= items1.name %></h3>
+             <span class="menu__detail">Number of times ordered: <%= items1.count %></span>
+            <span class="menu__preci"> Price : ₹<%= items1.price %></span> 
+            <% if(items1.availibility===true){ %>
+              <button
+              data-food="<%= JSON.stringify(items1) %>"
+              class="add-to-cart button menu__button">
+              <i class="bx bx-cart-alt"></i>
+            </button>
+          <% } 
+          else{ %>
+            <!-- <button
+            data-food="<%= JSON.stringify(item1) %>"
+            class="unavail bg-red-800  menu__button">
+            <i class="bx bx-cart-alt"></i>
+          </button> -->
         <% } %>
-      </div>
+          </div>
+  
+          <div class="menu__content">
+            <img src="<%=img.concat(items2.image) %> " alt="" class="menu__img" />
+            <h3 class="menu__name"><%= items2.name %></h3>
+             <span class="menu__detail">Number of times ordered: <%= items2.count %></span>
+            <span class="menu__preci"> Price :₹<%= items2.price %></span> 
+            <% if(items2.availibility===true){ %>
+            <button
+            data-food="<%= JSON.stringify(items2) %>"
+            class="add-to-cart button menu__button">
+            <i class="bx bx-cart-alt"></i>
+          </button>
+        <% } 
+        else{ %>
+          <!-- <button
+          data-food="<%= JSON.stringify(item2) %>"
+          class="unavail bg-red-800  menu__button">
+          <i class="bx bx-cart-alt"></i>
+        </button> -->
+      <% } %>
+  
+          </div>
+  
+          <div class="menu__content">
+            <img src="<%=img.concat(items3.image) %> " alt="" class="menu__img" />
+            <h3 class="menu__name"><%= items3.name %></h3>
+            <span class="menu__detail">Number of times ordered: <%= items3.count %></span>
+            <span class="menu__preci"> Price :₹<%= items3.price %></span>
+            <% if(items3.availibility===true){ %>
+              <button
+              data-food="<%= JSON.stringify(items3) %>"
+              class=" add-to-cart button menu__button">
+              <i class="bx bx-cart-alt"></i>
+            </button>
+          <% } 
+          else{ %>
+            <!-- <button
+            data-food="<%= JSON.stringify(item3) %>"
+            class="unavail bg-red-800  menu__button "  >
+             <i class="bx bx-cart-alt"></i>
+          </button>  -->
+        <% } %>
+          </div>
+          <!-- <h2 class="section-title">Top 3 in Non- Vegetarian Menu:</h2> -->
+        </div>
+
     </section>
 
   <!--========== CONTACT US ==========-->

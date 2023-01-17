@@ -2494,12 +2494,17 @@ function initAdmin(socket) {
 
                 }); 
                 // remove item from cart
-                let amountDisplay = document.querySelectorAll(".amount");
+                var amountDisplay = document.querySelector("#cash");
                 const removeCart = (food) => {
                     // axios
                     axios__WEBPACK_IMPORTED_MODULE_0___default().post("/remove-cart", food).then(function (res) {
                         cartCounter.innerText = res.data.totalqty.totalQty;
-                        amountDisplay.innerText=res.data.totalPrices
+                        if(res.data.totalqty.totalPrice) {
+                            amountDisplay.innerText="₹ " + res.data.totalqty.totalPrice;
+                        }
+                        else{
+                            amountDisplay.innerText="₹ 0";
+                        }
                         let sendmsg= food.item.name + " removed from cart"
                         new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
                           type: "success",
@@ -2528,8 +2533,82 @@ function initAdmin(socket) {
                        
                         setTimeout(function () {
                             window.location.reload(); 
-                        }, 500);
+                        }, 400);
 
+                    });
+                  });
+
+                //   plus cart and minus cart
+                const minusCart = (food) => {
+                    // axios
+      
+            
+                    axios__WEBPACK_IMPORTED_MODULE_0___default().post("/minus-cart", food).then(function (res) {
+                        cartCounter.innerText = res.data.totalqty.totalQty;
+                        amountDisplay.innerText="₹ " + res.data.totalqty.totalPrice;
+                      })
+                      .catch((err) => {
+                        new Noty({
+                          type: "error",
+                          timeout: 1000,
+                          text: "Something went wrong",
+                          progressBar: false,
+                        }).show();
+                      });
+                    
+                  };
+                  let minus = document.querySelectorAll(".minus");
+                  minus.forEach((btn) => {
+                    btn.addEventListener("click", (e) => {
+                      e.preventDefault();
+                      let food = JSON.parse(btn.dataset.food);
+                      let quanti= document.getElementById(food.item._id)
+                      var numu=Number(quanti.innerText)
+                      if(numu>1){
+                      minusCart(food);
+                      let quanti= document.getElementById(food.item._id)
+                      var numu=Number(quanti.innerText)
+                      quanti.innerText= numu-1
+                      }
+                      else{
+                     new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
+                        type: "error",
+                        timeout: 2000,
+                        text: "Please delete to remove item",
+                        progressBar: false,
+                      }).show();
+
+                      }
+                    });
+                  });
+                  const plusCart = (food) => {
+                    // axios
+                    axios__WEBPACK_IMPORTED_MODULE_0___default().post("/plus-cart", food).then(function (res) {
+                        cartCounter.innerText = res.data.totalqty.totalQty;
+                        amountDisplay.innerText="₹ " + res.data.totalqty.totalPrice;
+                      })
+                      .catch((err) => {
+                        new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
+                          type: "error",
+                          timeout: 1000,
+                          text: "Something went wrong",
+                          progressBar: false,
+                        }).show();
+                      });
+                  
+                  };
+                  let plus = document.querySelectorAll(".plus");
+                  plus.forEach((btn) => {
+                    btn.addEventListener("click", (e) => {
+                      e.preventDefault();
+                      let food = JSON.parse(btn.dataset.food);
+                 
+                      plusCart(food);
+                      let quanti= document.getElementById(food.item._id)
+                      var numu=Number(quanti.innerText)
+                      quanti.innerText= numu+1
+                    //   food.qty= session.cart.items[food._id].qty
+                    //    alert(quanti.innerHTML)
                     });
                   });
 

@@ -24,18 +24,28 @@
   </a>
 
   <!--========== HEADER ==========-->
-  <header class="l-header" id="header">
+  <header class="l-header" id="header" >
+
     <nav class="nav bd-container">
       <% let temp= user?.role ;
       if(user?.role==="admin") {temp='/admin/orders';}
       else temp='/';
       %>
       <a class="nav__logo" href= <%= temp %> ><img  width="100px" src="/img/logo.png" alt="logo.png" /></a>
-
+                    <% if(user?.role!="admin" ) { %>
+                      <li class="nav__cart nav__item">
+                        <a href="/cart" class="shopping__cart nav__links active-link rounded-full flex items-center">
+                          <span id="cartCounter" class="font-bold">
+                            <%= session.cart ? session.cart.totalQty : '' %>
+                          </span>
+                          <img class="active-link" src="/img/cart1.png" alt="cart.png" />
+                        </a>
+                      </li>
+                      <% } %>
       <div class="nav__menu " id="nav-menu">
         <ul class="nav__list">
             <% if(user?.role!="admin" ) { %>
-          <li class="nav__item">
+          <li class="nav__item ">
             <a href="/" class="rounded-full hover:text-green-800 nav__link active-link">Home🏠</a>
           </li>
           <li class="nav__item">
@@ -79,16 +89,7 @@
                       <a class="rounded-full nav__link active-link " href="/login">Login🤗</a>
                     </li>
                     <% } %>
-                    <% if(user?.role!="admin" ) { %>
-                      <li class="nav__cart nav__item">
-                        <a href="/cart" class="shopping__cart nav__link active-link rounded-full flex items-center">
-                          <span id="cartCounter" class="font-bold">
-                            <%= session.cart ? session.cart.totalQty : '' %>
-                          </span>
-                          <img class=" active-link" src="/img/cart1.png" alt="cart.png" />
-                        </a>
-                      </li>
-                      <% } %>
+
                       <li ><i class="bx bx-moon change-theme" id="theme-button"></i></li>
 
         </ul>
@@ -97,6 +98,7 @@
       <div class="nav__toggle" id="nav-toggle">
         <i class="bx bx-menu"></i>
       </div>
+      
     </nav>
   </header>
 
