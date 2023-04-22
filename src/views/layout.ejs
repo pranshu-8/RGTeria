@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8" />
 
-  <meta content='width=device-width, initial-scale=1.0  maximum-scale=1.0, user-scalable=0' name='viewport' />  <title>NytCravers</title>
+  <meta content='width=device-width, initial-scale=1.0  maximum-scale=1.0, user-scalable=0' name='viewport' />  <title>RGTeria</title>
   <link rel="stylesheet" href="/css/app.css" />
 
-  <link rel="icon" type="image/png" href="https://res.cloudinary.com/dltloch4q/image/upload/v1673938788/favicon-32x32_m8dluj.png" sizes="32x32" />
+  <link rel="shortcut icon" href="../../public/favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <!--========== BOX ICONS ==========-->
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
       if(user?.role==="admin") {temp='/admin/orders';}
       else temp='/';
       %>
-      <a class="nav__logo" href= <%= temp %> ><img  width="90px" src="/img/logos.png" alt="logos.png" /></a>
+      <a class="nav__logo" href= <%= temp %> ><img  width="100px" src="/img/logo.png" alt="logo.png" /></a>
                     <% if(user?.role!="admin" ) { %>
                       <li class="nav__cart nav__item">
                         <a href="/cart" class="shopping__cart nav__links active-link rounded-full flex items-center">
@@ -156,8 +156,8 @@
     <footer class="footer section bd-container">
       <div class="footer__container bd-grid">
         <div class="footer__content">
-          <a href="#" class="footer__logo">NytCravers</a>
-          <span class="footer__description">Time to Save Some Time</span>
+          <a href="#" class="footer__logo">RGIPT Cafeteria</a>
+          <span class="footer__description">Jaiswal Caterers</span>
           <!-- <h3 class="footer__title">Services</h3>
           <ul>
             <li><a href="#" class="footer__link">Food Booking</a></li>
@@ -187,15 +187,13 @@
           </ul> -->
 
         <div class="footer__content">
-          <h3 class="footer__title">Made for      <p></p>   Hackistica-23</h3>
-         <a href="https://hackistica-23.devfolio.co/" target="_blank" rel="noopener noreferrer">
-          <img  style="border-radius: 14%;" width="100px" src="/img/hackistica.png" alt="hackistica.png" />
-        </a> 
+          <h3 class="footer__title">Secured by     <p></p>   OWASP RGIPT</h3>
+         <a href="https://owasp.org/www-chapter-rajiv-gandhi-institute-of-petroleum-technology/" target="_blank" rel="noopener noreferrer"><img  style="border-radius: 14%;" width="100px" src="/img/owasp.jpg" alt="owasp.jpg" /></a> 
 
         </div>
       </div>
 
-      <p class="footer__copy">&#169; <script>document.write(new Date().getFullYear())</script> NytCravers. All rights reserved.</p>
+      <p class="footer__copy">&#169; <script>document.write(new Date().getFullYear())</script> RGTeria Services. All rights reserved.</p>
     </footer>
 
     <!--========== MAIN JS ==========-->
